@@ -1,0 +1,29 @@
+services:
+  # Backend
+  server:
+    container_name: server
+    hostname: server
+    restart: always
+    build:
+      context: ./server
+    ports:
+      - "8000:8000"
+    expose:
+      - 8000
+    env_file:
+      - ./server/.env
+    networks:
+      - backbone
+    volumes:
+      - media:/app/media/
+      - static:/app/static/
+      - db:/app/db/
+
+networks:
+  backbone:
+    driver: bridge
+
+volumes:
+  media:
+  static:
+  db:
