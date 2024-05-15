@@ -14,16 +14,7 @@ services:
       - ./server/.env
     networks:
       - backbone
-    volumes:
-      - media:/app/media/
-      - static:/app/static/
-      - db:/app/db/
 
 networks:
   backbone:
     driver: bridge
-
-volumes:
-  media:
-  static:
-  db:
