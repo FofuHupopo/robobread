@@ -15,6 +15,22 @@ services:
     networks:
       - backbone
 
+  # Frontend
+  client:
+    container_name: client
+    hostname: client
+    restart: always
+    build:
+      context: ./client
+    ports:
+      - "3000:3000"
+    expose:
+      - 3000
+    depends_on:
+     - server
+    networks:
+      - backbone
+
 networks:
   backbone:
     driver: bridge
