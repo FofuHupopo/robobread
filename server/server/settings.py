@@ -14,7 +14,6 @@ ALLOWED_HOSTS = [
     "*"
 ]
 
-
 INSTALLED_APPS = [
     'django.contrib.admin',
     'django.contrib.auth',
@@ -30,6 +29,8 @@ INSTALLED_APPS = [
     
     # API
     'api.products',
+    'api.payment',
+    'api.orders',
 ]
 
 MIDDLEWARE = [
@@ -160,7 +161,6 @@ DATA_UPLOAD_MAX_MEMORY_SIZE = 1024 * 1024 * 20  # 20 MB
 FILE_UPLOAD_MAX_MEMORY_SIZE = 1024 * 1024 * 20  # 20 MB
 
 
-
 REST_FRAMEWORK = {
     'DEFAULT_PERMISSION_CLASSES': [
         'rest_framework.permissions.AllowAny',
@@ -170,4 +170,16 @@ REST_FRAMEWORK = {
         'rest_framework.renderers.BrowsableAPIRenderer',
     ],
     'DEFAULT_SCHEMA_CLASS': 'drf_spectacular.openapi.AutoSchema'
+}
+
+
+TINKOFF_PAYMENTS_CONFIG = {
+    'TAXATION': 'usn_income',
+    'ITEM_TAX': 'none',
+    'TERMINAL_KEY': getenv("TERMINAL_KEY"),
+    'SECRET_KEY': getenv("SECRET_KEY"),
+    'SUCCESS_URL': '',
+    'FAIL_URL': '',
+    'RECEIPT_EMAIL': getenv('RECEIPT_EMAIL'),
+    'RECEIPT_PHONE': getenv('RECEIPT_PHONE'),
 }

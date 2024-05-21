@@ -5,6 +5,8 @@ from drf_spectacular.views import SpectacularAPIView, SpectacularSwaggerView
 
 urlpatterns = [
     path("products/", include("api.products.urls")),
+    path("payment/", include("api.payment.urls")),
+    path("orders/", include("api.orders.urls")),
 ]
 
 if hasattr(settings, "DEBUG") and getattr(settings, "DEBUG"):

@@ -8,3 +8,4 @@ def main():
 
     execute_from_command_line(['manage.py', 'migrate'])
     execute_from_command_line(['manage.py', 'faker'])
+    print("Fake data created successfully!")

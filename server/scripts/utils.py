@@ -1,6 +1,7 @@
 import os
 from pathlib import Path
 from dotenv import load_dotenv
+import django
 
 
 def load_env():
@@ -11,3 +12,4 @@ def load_env():
     load_dotenv(DOTENV_PATH)
 
     os.environ.setdefault("DJANGO_SETTINGS_MODULE", 'server.settings')
+    django.setup()
