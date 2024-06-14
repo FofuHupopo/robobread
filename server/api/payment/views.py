@@ -4,6 +4,7 @@ from rest_framework.views import APIView
 from rest_framework.response import Response
 from rest_framework.request import Request
 from rest_framework.permissions import AllowAny
+from rest_framework.renderers import StaticHTMLRenderer
 from drf_spectacular.utils import extend_schema, OpenApiParameter, OpenApiTypes
 
 from api.orders import models as orders_models
@@ -118,11 +119,11 @@ class PaymentView(APIView):
             serializer.data,
             status.HTTP_200_OK
         )
-        
-        
+
+
 class QrPaymentView(APIView):
-    serializer_class = serializers.PaymentSerializer
     permission_classes = [AllowAny]
+    renderer_classes = [StaticHTMLRenderer]
 
     @extend_schema(
         parameters=[
@@ -130,7 +131,10 @@ class QrPaymentView(APIView):
                 name="payment_id",
                 type=OpenApiTypes.STR
             )
-        ]
+        ],
+        responses={
+            200: OpenApiTypes.STR
+        }
     )
     def get(self, request: Request):
         payment_id = request.query_params.get("payment_id")
@@ -149,13 +153,10 @@ class QrPaymentView(APIView):
                 "status": f"Не была найдена оплата с {payment_id=}."
             }, status.HTTP_400_BAD_REQUEST)
 
-        payment = merchant_api.get_qr(payment)
-        payment.save()
-
-        serializer = self.serializer_class(payment)
+        qr = merchant_api.get_qr(payment)
 
         return Response(
-            serializer.data,
+            qr,
             status.HTTP_200_OK
         )
 
@@ -190,6 +191,62 @@ class CancelPaymentView(APIView):
             }, status.HTTP_400_BAD_REQUEST)
 
         payment = merchant_api.cancel(payment)
+        payment.save()
+
+        serializer = self.serializer_class(payment)
+
+        return Response(
+            serializer.data,
+            status.HTTP_200_OK
+        )
+
+
+class SbpPayTestView(APIView):
+    serializer_class = serializers.PaymentSerializer
+    permission_classes = [AllowAny]
+
+    @extend_schema(
+        parameters=[
+            OpenApiParameter(
+                name="payment_id",
+                type=OpenApiTypes.STR
+            ),
+            OpenApiParameter(
+                name="is_expired",
+                type=OpenApiTypes.BOOL,
+                default=False,
+                required=False
+            ),
+            OpenApiParameter(
+                name="is_rejected",
+                type=OpenApiTypes.BOOL,
+                default=False,
+                required=False
+            )
+        ]
+    )
+    def get(self, request: Request):
+        payment_id = request.query_params.get("payment_id")
+        is_expired = bool(request.query_params.get("is_expired", False))
+        is_rejected = bool(request.query_params.get("is_rejected", False))
+        
+        if not payment_id:
+            return Response({
+                "status": "Не передан payment_id."
+            }, status.HTTP_400_BAD_REQUEST)
+
+        try:
+            payment = models.PaymentModel.objects.get(
+                pk=payment_id
+            )
+        except models.PaymentModel.DoesNotExist:
+            return Response({
+                "status": f"Не была найдена оплата с {payment_id=}."
+            }, status.HTTP_400_BAD_REQUEST)
+
+        payment = merchant_api.spb_pay_test(
+            payment, is_expired, is_rejected
+        )
         payment.save()
 
         serializer = self.serializer_class(payment)

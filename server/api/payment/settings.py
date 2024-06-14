@@ -7,7 +7,8 @@ DEFAULT_CONFIG = {
         'INIT': 'https://securepay.tinkoff.ru/v2/Init',
         'GET_STATE': 'https://securepay.tinkoff.ru/v2/GetState',
         'CANCEL': 'https://securepay.tinkoff.ru/v2/Cancel',
-        'GET_QR': 'https://securepay.tinkoff.ru/v2/GetQr'
+        'GET_QR': 'https://securepay.tinkoff.ru/v2/GetQr',
+        'SPB_PAY_TEST': 'https://securepay.tinkoff.ru/v2/SbpPayTest'
     },
     'TAXATION': 'usn_income',
     'ITEM_TAX': 'none',

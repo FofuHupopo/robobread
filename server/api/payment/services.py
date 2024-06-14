@@ -124,6 +124,17 @@ class MerchantAPI:
         response = self._request('CANCEL', requests.post, {'PaymentId': p.payment_id}).json()
         return self.update_payment_from_response(p, response)
 
-    def get_qr(self, p: PaymentModel) -> PaymentModel:
-        response = self._request('GET_QR', requests.post, {'PaymentId': p.payment_id, 'DataType': 'PAYLOAD'}).json()
+    def get_qr(self, p: PaymentModel) -> str:
+        response = self._request('GET_QR', requests.post, {'PaymentId': p.payment_id, 'DataType': 'IMAGE'}).json()
+        return response.get("Data", "")
+
+    def spb_pay_test(
+        self, p: PaymentModel, is_expired: bool=False, is_rejected: bool=False
+    ) -> PaymentModel:
+        response = self._request("SPB_PAY_TEST", requests.post, {
+            'PaymentId': p.payment_id,
+            'IsDeadlineExpired': is_expired,
+            'IsRejected': is_rejected
+        })
+        print(is_expired, is_rejected)
         return self.update_payment_from_response(p, response)
