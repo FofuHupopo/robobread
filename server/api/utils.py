@@ -18,3 +18,4 @@ class ModBusCommand:
         
     def sell_item(self, cell_number):
         self._request(f"sell/{cell_number}", requests.get, {})
+        print(f"selled item in cell {cell_number}")
