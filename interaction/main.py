@@ -26,3 +26,7 @@ def main():
         reload=True,
         workers=int(getenv("WORKERS")) or 1
     )
+
+
+if __name__ == "__main__":
+    main()
