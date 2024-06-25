@@ -1,11 +1,21 @@
-from pymodbus.client.serial import ModbusSerialClient
+import minimalmodbus
 
 
-client = ModbusSerialClient(method='rtu', port='/dev/ttyUSB0', stopbits=1.5, bytesize=8, parity='E', baudrate=9600, timeout=1)
+PORT = '/dev/ttyUSB0'
+BAUDRATE = 9600
+STOPBITS = 1.5
+PARITY = 'E'
 
-connection = client.connect()
-if connection:
-    print("Соединение установлено.")
-    client.close()
-else:
-    print("Не удалось установить соединение.")
+instrument = minimalmodbus.Instrument(PORT, slaveaddress=1, mode='rtu')
+
+instrument.serial.baudrate = BAUDRATE
+instrument.serial.bytesize = 8
+instrument.serial.parity = PARITY
+instrument.serial.stopbits = STOPBITS
+
+register_address = 0x0000
+number_of_registers = 1
+
+
+value = instrument.read_register(register_address, number_of_registers, functioncode=3)
+print("Значение из регистра:", value)
