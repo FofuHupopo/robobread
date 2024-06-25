@@ -9,8 +9,8 @@ readme = "README.md"
 python = "^3.10"
 fastapi = "^0.111.0"
 uvicorn = "^0.30.1"
-pymodbus = "^3.6.8"
 python-dotenv = "^1.0.1"
+minimalmodbus = "^2.1.1"
 
 
 [build-system]
