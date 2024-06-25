@@ -7,6 +7,7 @@ from rest_framework.permissions import AllowAny
 from rest_framework.renderers import StaticHTMLRenderer
 from drf_spectacular.utils import extend_schema, OpenApiParameter, OpenApiTypes
 
+from api.utils import ModBusCommand
 from api.orders import models as orders_models
 from .services import MerchantAPI
 from . import models
@@ -45,9 +46,20 @@ class PaymentView(APIView):
             return Response({
                 "status": f"Не была найдена оплата с {payment_id=}."
             }, status.HTTP_400_BAD_REQUEST)
+            
+        payment_is_paid_old = payment.is_paid()
 
         merchant_api.status(payment)
         payment.save()
+        
+        payment_is_paid_new = payment.is_paid()
+        
+        if payment_is_paid_old == False and payment_is_paid_new == True:
+            order = orders_models.OrderModel.objects.get(pk=payment.order_id)
+            product = order.product
+            
+            if product.cell:
+                ModBusCommand.sell_item(product.cell)
 
         if payment.is_paid():
             order = orders_models.OrderModel.objects.get(
@@ -68,7 +80,7 @@ class PaymentView(APIView):
     )
     def post(self, request: Request):
         order_id = request.data.get("order_id")
-        
+
         if not order_id:
             return Response({
                 "status": "Не передан order_id."

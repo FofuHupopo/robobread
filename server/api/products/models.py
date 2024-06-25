@@ -55,6 +55,11 @@ class ProductModel(models.Model):
         default="products/default.png",
         upload_to=product_image_upload_path
     )
+    
+    cell = models.IntegerField(
+        "Ячейка", default=None,
+        null=True, blank=True
+    )
 
     class Meta:
         verbose_name = "Товар"
