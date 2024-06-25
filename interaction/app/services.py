@@ -4,7 +4,8 @@ import serial
 
 class ModbusService:
     def __init__(self, port, address):
-        self.client = ModbusSerialClient(method='rtu', port=port, timeout=1, baudrate=9600, stopbits=serial.STOPBITS_ONE_POINT_FIVE)
+        self.serial_port = serial.Serial(port=port, baudrate=9600, timeout=1, stopbits=serial.STOPBITS_ONE_POINT_FIVE, parity=serial.PARITY_NONE)
+        self.client = ModbusSerialClient(method='rtu', port=self.serial_port, timeout=1, stopbits=1.5, baudrate=9600)
         self.address = address
 
     def connect(self):
