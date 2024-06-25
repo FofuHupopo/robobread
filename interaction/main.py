@@ -12,6 +12,8 @@ api_router = APIRouter(
 )
 api_router.include_router(router)
 
+app.include_router(api_router)
+
 
 @app.get("/")
 async def index():
