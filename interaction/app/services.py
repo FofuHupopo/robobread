@@ -1,21 +1,23 @@
-import serial
-from pymodbus.client.serial import ModbusSerialClient
-
+import minimalmodbus
 
 class ModbusService:
     def __init__(self, port, address):
-        self.client = ModbusSerialClient(method='rtu', port=port, stopbits=1.5, bytesize=8, parity='E', baudrate=9600, timeout=1)
-        self.address = address
+        self.instrument = minimalmodbus.Instrument(port, address)
+        self.instrument.serial.baudrate = 9600
+        self.instrument.serial.bytesize = 8
+        self.instrument.serial.parity = minimalmodbus.serial.PARITY_EVEN
+        self.instrument.serial.stopbits = 1.5
+        self.instrument.serial.timeout = 1
+        self.instrument.mode = minimalmodbus.MODE_RTU
 
     def connect(self):
-        if not self.client.connect():
-            raise ConnectionError('Failed to connect to the modbus device')
+        pass
 
     def disconnect(self):
-        self.client.close()
+        pass
 
     def write_registers(self, register, values):
-        self.client.write_registers(register, values, unit=self.address)
+        self.instrument.write_registers(register, values, functioncode=16)
 
     def sell_item(self, cell_number):
         sell_command = [0x10, 0x10, 0x00, 0x00, 0x01, 0x02, 0x00, cell_number, 0x00, 0x00]
