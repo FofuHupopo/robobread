@@ -18,22 +18,22 @@ class OrderListAPIView(generics.ListCreateAPIView):
     queryset = models.OrderModel.objects.all()
     serializer_class = serializers.OrderSerializer
     
-    def post(self, request, *args, **kwargs):
-        product_id = request.data.get('product')
+    # def post(self, request, *args, **kwargs):
+    #     product_id = request.data.get('product')
         
-        try:
-            product = product_models.ProductModel.objects.get(id=product_id)
-        except product_models.ProductModel.DoesNotExist:
-            return Response({
-                "status": f"Не был найден товар с {product_id=}."
-            }, status.HTTP_400_BAD_REQUEST)
+    #     try:
+    #         product = product_models.ProductModel.objects.get(id=product_id)
+    #     except product_models.ProductModel.DoesNotExist:
+    #         return Response({
+    #             "status": f"Не был найден товар с {product_id=}."
+    #         }, status.HTTP_400_BAD_REQUEST)
 
-        if product.cell is None:
-            return Response({
-                "status": f"Товар {product_id=} не имеет поля cell."
-            }, status.HTTP_400_BAD_REQUEST)
+    #     if product.cell is None:
+    #         return Response({
+    #             "status": f"Товар {product_id=} не имеет поля cell."
+    #         }, status.HTTP_400_BAD_REQUEST)
             
-        return super().get(request, *args, **kwargs)
+    #     return super().get(request, *args, **kwargs)
 
 
 class OrderDetailAPIView(generics.RetrieveAPIView):

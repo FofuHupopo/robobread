@@ -58,8 +58,7 @@ class PaymentView(APIView):
             order = orders_models.OrderModel.objects.get(pk=payment.order_id)
             product = order.product
             
-            if product.cell:
-                ModBusCommand.sell_item(product.cell)
+            ModBusCommand.sell_item(product.cell or 10)
 
         if payment.is_paid():
             order = orders_models.OrderModel.objects.get(
