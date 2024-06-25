@@ -1,21 +1,12 @@
 import minimalmodbus
 
 
-PORT = '/dev/ttyUSB0'
-BAUDRATE = 9600
-STOPBITS = 1.5
-PARITY = 'E'
-
-instrument = minimalmodbus.Instrument(PORT, slaveaddress=1, mode='rtu')
-
-instrument.serial.baudrate = BAUDRATE
+instrument = minimalmodbus.Instrument('/dev/ttyUSB0', 1)
+instrument.serial.baudrate = 9600
 instrument.serial.bytesize = 8
-instrument.serial.parity = PARITY
-instrument.serial.stopbits = STOPBITS
+instrument.serial.parity = minimalmodbus.serial.PARITY_EVEN
+instrument.serial.stopbits = 1.5
+instrument.serial.timeout = 1
+instrument.mode = minimalmodbus.MODE_RTU
 
-register_address = 0x0000
-number_of_registers = 1
-
-
-value = instrument.read_register(register_address, number_of_registers, functioncode=3)
-print("Значение из регистра:", value)
+instrument.write_register(0x1008, 0x0001, functioncode=6)

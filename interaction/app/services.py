@@ -1,4 +1,5 @@
 import minimalmodbus
+import time
 
 
 class ModbusService:
@@ -12,7 +13,9 @@ class ModbusService:
         self.instrument.mode = minimalmodbus.MODE_RTU
 
     def connect(self):
-        pass
+        initial_command = [0x01, 0x06, 0x10, 0x08, 0x00, 0x01, 0xCD, 0x08]
+        
+        self.write_registers(16, initial_command)
 
     def disconnect(self):
         pass
@@ -21,16 +24,16 @@ class ModbusService:
         self.instrument.write_registers(register, values, functioncode=16)
 
     def sell_item(self, cell_number):
-        initial_command = [0x01, 0x06, 0x10, 0x08, 0x00, 0x01, 0xCD, 0x08]
         sell_command = [0x01, 0x10, 0x10, 0x00, 0x00, 0x01, 0x02, 0x00, cell_number]
         sell_command.extend(self.calculate_crc16_modbus(sell_command))
         dispense_command = [0x01, 0x06, 0x10, 0x06, 0x00, 0x01, 0xAC, 0xCB]
 
-        commands = [initial_command, sell_command, dispense_command]
+        commands = [sell_command, dispense_command]
 
         for command in commands:
             self.write_registers(16, command)
-            
+            time.sleep(1)
+
     def calculate_crc16_modbus(self, data):
         crc = 0xFFFF
         polynomial = 0xA001
