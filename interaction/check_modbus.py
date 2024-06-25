@@ -1,4 +1,4 @@
-from pymodbus.client.sync import ModbusSerialClient
+from pymodbus.client.serial import ModbusSerialClient
 
 
 client = ModbusSerialClient(method='rtu', port='COM4', baudrate=9600, timeout=1)
