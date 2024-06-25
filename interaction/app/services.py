@@ -13,9 +13,7 @@ class ModbusService:
         self.instrument.mode = minimalmodbus.MODE_RTU
 
     def connect(self):
-        initial_command = [0x01, 0x06, 0x10, 0x08, 0x00, 0x01, 0xCD, 0x08]
-        
-        self.write_registers(16, initial_command)
+        self.instrument.write_register(0x1008, 0x0001, functioncode=6)
 
     def disconnect(self):
         pass
@@ -24,26 +22,8 @@ class ModbusService:
         self.instrument.write_registers(register, values, functioncode=16)
 
     def sell_item(self, cell_number):
-        sell_command = [0x01, 0x10, 0x10, 0x00, 0x00, 0x01, 0x02, 0x00, cell_number]
-        sell_command.extend(self.calculate_crc16_modbus(sell_command))
-        dispense_command = [0x01, 0x06, 0x10, 0x06, 0x00, 0x01, 0xAC, 0xCB]
+        self.instrument.write_registers(0x1000, [cell_number])
 
-        commands = [sell_command, dispense_command]
+        time.sleep(1)
 
-        for command in commands:
-            self.write_registers(16, command)
-            time.sleep(1)
-
-    def calculate_crc16_modbus(self, data):
-        crc = 0xFFFF
-        polynomial = 0xA001
-
-        for byte in data:
-            crc ^= byte
-            for _ in range(8):
-                if crc & 0x0001:
-                    crc = (crc >> 1) ^ polynomial
-                else:
-                    crc >>= 1
-
-        return crc.to_bytes(2, byteorder='little')
+        self.instrument.write_register(0x1006, 0x0001, functioncode=6)
