@@ -1,10 +1,10 @@
-from pymodbus.client.serial import ModbusSerialClient
 import serial
+from pymodbus.client.serial import ModbusSerialClient
 
 
 class ModbusService:
     def __init__(self, port, address):
-        self.serial_port = serial.Serial(port=port, baudrate=9600, timeout=1, stopbits=serial.STOPBITS_ONE_POINT_FIVE, parity=serial.PARITY_NONE)
+        self.serial_port = serial.serial_for_url(f'modbusRTU:{port}', baudrate=9600, bytesize=8, parity='N', stopbits=serial.STOPBITS_ONE_POINT_FIVE, timeout=1)
         self.client = ModbusSerialClient(method='rtu', port=self.serial_port, timeout=1, stopbits=1.5, baudrate=9600)
         self.address = address
 
