@@ -35,7 +35,7 @@ async def shutdown():
 
 
 @router.get("/sell/{cell_number}")
-async def sell_item(cell_number):
+async def sell_item(cell_number: int):
     service.sell_item(cell_number)
     
     return {"message": f"Item sold in cell number {cell_number}"}
