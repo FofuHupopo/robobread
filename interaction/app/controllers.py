@@ -39,3 +39,8 @@ async def sell_item(cell_number: int):
     service.sell_item(cell_number)
     
     return {"message": f"Item sold in cell number {cell_number}"}
+
+
+@router.get("/ping")
+async def ping():
+    return {"message": f"Pong"}
