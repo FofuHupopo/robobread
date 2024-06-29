@@ -27,6 +27,10 @@ INSTALLED_APPS = [
     'corsheaders',
     'drf_spectacular',
     
+    # Admin
+    'constance',
+    'constance.backends.database',
+    
     # API
     'api.products',
     'api.payment',
@@ -182,4 +186,10 @@ TINKOFF_PAYMENTS_CONFIG = {
     'FAIL_URL': '',
     'RECEIPT_EMAIL': getenv('RECEIPT_EMAIL'),
     'RECEIPT_PHONE': getenv('RECEIPT_PHONE'),
+}
+
+
+CONSTANCE_BACKEND = 'constance.backends.database.DatabaseBackend'
+CONSTANCE_CONFIG = {
+    'LOCK_CODE': (1234, 'Код замка'),
 }
