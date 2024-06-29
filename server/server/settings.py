@@ -191,5 +191,5 @@ TINKOFF_PAYMENTS_CONFIG = {
 
 CONSTANCE_BACKEND = 'constance.backends.database.DatabaseBackend'
 CONSTANCE_CONFIG = {
-    'LOCK_CODE': (1234, 'Код замка'),
+    'LOCK_CODE': ("1234", 'Код замка'),
 }

@@ -7,6 +7,7 @@ urlpatterns = [
     path("products/", include("api.products.urls")),
     path("payment/", include("api.payment.urls")),
     path("orders/", include("api.orders.urls")),
+    path("security/", include("api.security.urls")),
 ]
 
 if hasattr(settings, "DEBUG") and getattr(settings, "DEBUG"):

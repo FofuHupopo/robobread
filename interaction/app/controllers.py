@@ -41,6 +41,11 @@ async def sell_item(cell_number: int):
     return {"message": f"Item sold in cell number {cell_number}"}
 
 
+@router.get("/open-door")
+async def open_door():
+    return {"message": f"Door opened"}
+
+
 @router.get("/ping")
 async def ping():
     return {"message": f"Pong"}

@@ -7,7 +7,7 @@ from rest_framework.permissions import AllowAny
 from rest_framework.renderers import StaticHTMLRenderer
 from drf_spectacular.utils import extend_schema, OpenApiParameter, OpenApiTypes
 
-from api.utils import ModBusCommand
+from api.utils import InteractionCommand
 from api.orders import models as orders_models
 from .services import MerchantAPI
 from . import models
@@ -59,9 +59,9 @@ class PaymentView(APIView):
             product = order.product
             
             if product.cell:
-                ModBusCommand().sell_item(product.cell)
+                InteractionCommand().sell_item(product.cell)
             else:
-                ModBusCommand().sell_item(10)
+                InteractionCommand().sell_item(10)
 
         if payment.is_paid():
             order = orders_models.OrderModel.objects.get(
