@@ -1,0 +1,86 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font: 16px "Helvetica Neue", Helvetica, Arial, sans-serif;
+}
+
+.container {
+    padding: 20px 0;
+}
+
+.title {
+    display: flex;
+    justify-content: center;
+    text-align: center;
+}
+
+.items {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.item {
+    padding: 10px;
+    margin: 10px 0 10px 0;
+    min-width: 90%;
+    
+    -webkit-box-shadow: 4px 4px 8px 0px rgba(34, 60, 80, 0.31);
+    -moz-box-shadow: 4px 4px 8px 0px rgba(34, 60, 80, 0.31);
+    box-shadow: 4px 4px 8px 0px rgba(34, 60, 80, 0.31);
+}
+
+.item div {
+    display: flex;
+    justify-content: left;
+}
+
+.count-enter {
+    width: 30px;
+}
+
+.fill {
+    margin-left: 10px;
+}
+
+.item-label {
+    margin-right: 10px;
+}
+
+button {
+    background-color: white;
+    border: 1px solid black;
+    padding: 1px 3px;
+}
+
+.buttons {
+    display: flex;
+    justify-content: center;
+}
+
+.save {
+    margin-left: 10px;
+}
+
+.buttons-wrap {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.notifications {
+    margin: 10px 0;
+}
+
+
+.green {
+    color: green;
+}
+
+.red {
+    color: red;
+}

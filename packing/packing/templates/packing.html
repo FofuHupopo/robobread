@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Страница затаривания</title>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='packing.css') }}">
+</head>
+<body>
+    <!DOCTYPE html>
+<html lang="en">
+<head>
+    <div class="title">
+        <h2>Затаривание</h2>
+    </div>
+    <div class="container">
+        <div class="items">
+            {% for cell in cells %}
+            <div class="item item{{ cell.id }}">
+                <div class="cell{{ cell.id }}">
+                    <p class="item-label">Ячейка:</p>
+                    <p>{{ cell.number }}</p>
+                </div>
+                <div class="name{{ cell.id }}">
+                    <p class="item-label">Название:</p>
+                    <p>{{ cell.name }}</p>
+                </div>
+                <div class="count{{ cell.id }}">
+                    <p class="item-label">Количество:</p>
+                    <div class="enter-count{{ cell.id }}">
+                        <input class="count-enter" id="count-enter{{ cell.id }}" type="number" value="{{ cell.count }}" max="{{ cell.max_count }}"> <p> / </p> <p> {{ cell.max_count }}</p>
+                    </div>
+                    <button class="fill fill{{ cell.id }}" onclick="fillItem('{{ cell.id }}')">Заполнить</button>
+                </div>
+            </div>
+            {% endfor %}
+        
+            <!-- <div class="item item1">
+                <div class="cell1">
+                    <p class="item-label">Ячейка:</p>
+                    <p>001</p>
+                </div>
+                <div class="name1">
+                    <p class="item-label">Название:</p>
+                    <p>Круассан обычный</p>
+                </div>
+                <div class="count1">
+                    <p class="item-label">Количество:</p>
+                    <div class="enter-count1">
+                        <input class="count-enter" id="count-enter1" type="number" value="5" max="10"> <p> / </p> <p> 10</p>
+                    </div>
+                    <button class="fill fill1" onclick="fillItem(1)">Заполнить</button>
+                </div>
+            </div> -->
+        </div>
+
+        
+        <div class="buttons-wrap">
+            <div class="notifications">
+                <p id="notification"></p>
+            </div>
+
+            <div class="buttons">
+                <button class="fill fill-all" onclick="fillAll()">Заполнить все</button>
+                <button class="save" onclick="save()">Сохранить</button>
+            </div>
+        </div>
+    </div>
+</body>
+<script src="{{ url_for('static', filename='packing.js') }}"></script>
+</html>

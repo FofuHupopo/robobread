@@ -9,7 +9,18 @@ class CategorySerializer(serializers.ModelSerializer):
         fields = '__all__'
 
 
+class CellSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = models.CellModel
+        fields = '__all__'
+
+
 class ProductSerializer(serializers.ModelSerializer):
     class Meta:
         model = models.ProductModel
-        fields = '__all__'
+        depth = 1
+        fields = (
+            'id', 'name', 'description',
+            'composition', 'price', 'image',
+            'category', 'cells',
+        )

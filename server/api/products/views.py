@@ -34,10 +34,20 @@ class ProductListAPIView(generics.ListAPIView):
         
         if category_id:
             queryset = queryset.filter(category_id=category_id)
-            
-        return queryset
+    
+        return list(filter(lambda product: not product.is_empty, queryset))
 
 
-class ProductDetailAPIView(generics.RetrieveAPIView):
+class ProductDetailAPIView(generics.ListAPIView):
     queryset = models.ProductModel.objects.all()
     serializer_class = serializers.ProductSerializer
+
+
+class CellListAPIView(generics.ListAPIView):
+    queryset = models.CellModel.objects.all()
+    serializer_class = serializers.CellSerializer
+
+
+class CellDetailAPIView(generics.RetrieveUpdateAPIView):
+    queryset = models.CellModel.objects.all()
+    serializer_class = serializers.CellSerializer

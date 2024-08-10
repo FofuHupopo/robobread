@@ -58,10 +58,13 @@ class PaymentView(APIView):
             order = orders_models.OrderModel.objects.get(pk=payment.order_id)
             product = order.product
             
-            if product.cell:
-                InteractionCommand().sell_item(product.cell)
-            else:
-                InteractionCommand().sell_item(10)
+            if not product.is_empty:
+                cell = product.get_first_not_empty_cell()
+
+                InteractionCommand().sell_item(cell.number)
+
+                cell.count -= 1
+                cell.save()
 
         if payment.is_paid():
             order = orders_models.OrderModel.objects.get(

@@ -1,4 +1,5 @@
 from django.db import models
+import json
 
 
 def category_image_upload_path(instance: models.Model, filename: str) -> str:
@@ -55,11 +56,14 @@ class ProductModel(models.Model):
         default="products/default.png",
         upload_to=product_image_upload_path
     )
-    
-    cell = models.IntegerField(
-        "Ячейка", default=None,
-        null=True, blank=True
-    )
+
+    @property
+    def is_empty(self) -> bool:
+        for cell in self.cells.all():
+            if cell.count > 0:
+                return False
+
+        return True
 
     class Meta:
         verbose_name = "Товар"
@@ -68,3 +72,37 @@ class ProductModel(models.Model):
     
     def __str__(self) -> str:
         return f"ProductModel<name={self.name}, category={self.category.name}>"
+    
+    def get_first_not_empty_cell(self) -> "CellModel":
+        for cell in self.cells.all():
+            if cell.count > 0:
+                return cell
+            
+        return None
+
+
+class CellModel(models.Model):
+    number = models.IntegerField(
+        "Номер ячейки", unique=True,
+        blank=True, null=True
+    )
+
+    count = models.IntegerField(
+        "Количество", default=0
+    )
+
+    max_count = models.IntegerField(
+        "Максимальное количество", default=10
+    )
+
+    product = models.ForeignKey(
+        ProductModel, on_delete=models.CASCADE, related_name="cells"
+    )
+
+    class Meta:
+        verbose_name = "Ячейка"
+        verbose_name_plural = "Ячейки"
+        db_table = "products__cells"
+
+    def __str__(self) -> str:
+        return f"<CellModel number={self.number}, product={self.product.name}>"
