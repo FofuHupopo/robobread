@@ -1,0 +1,36 @@
+{% extends 'layout/layout_vertical.html' %}
+
+{% load static %}
+
+{% block title %}Товарный остаток{% endblock %}
+
+{% block vendor_css %}
+{{ block.super }}
+{% endblock vendor_css %}
+
+{% block page_css %}
+{{ block.super }}
+<link rel="stylesheet" href="{% static 'css/product_stock.css' %}" />
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.0/font/bootstrap-icons.css">
+{% endblock page_css %}
+
+{% block vendor_js %}
+{{ block.super }}
+{% endblock vendor_js %}
+
+{% block page_js %}
+{{ block.super }}
+<script src="{% static 'js/product_stock.js' %}"></script>
+<script src="{% static 'js/api.js' %}"></script>
+{% endblock page_js %}
+
+{% block content %}
+
+<div class="container">
+    <h2 class="mb-4">Автоматы:</h2>
+
+    <div id="vendingMachineList">
+    </div>
+</div>
+
+{% endblock %}

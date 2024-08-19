@@ -1,0 +1,38 @@
+<aside id="layout-menu" class="layout-menu menu-vertical menu bg-menu-theme">
+
+  <div class="app-brand demo">
+    <a href="{% url 'index' %}" class="app-brand-link">
+      <span class="app-brand-logo demo">
+        {% include './logo.html' with width=25 withbg="#696cff" %}
+      </span>
+      <span class="app-brand-text demo menu-text fw-bold ms-2">Robobread</span>
+    </a>
+
+    <a href="javascript:void(0);" class="layout-menu-toggle menu-link text-large ms-auto d-block d-xl-none">
+      <i class="bx bx-chevron-left bx-sm align-middle"></i>
+    </a>
+  </div>
+
+
+  <div class="menu-inner-shadow"></div>
+
+  <ul class="menu-inner py-1">
+        <li class="menu-item {% if 'index' == request.resolver_match.url_name %}active{% endif %}">
+          <a href="{% url 'index' %}" class="menu-link">
+            <div class="text-truncate" data-i18n="Analytics">Аналитика</div>
+          </a>
+        </li>
+
+        <li class="menu-item {% if 'product_stock' == request.resolver_match.url_name %}active{% endif %}">
+          <a href="{% url 'product_stock' %}" class="menu-link">
+            <div class="text-truncate" data-i18n="Analytics">Товарный остаток</div>
+          </a>
+        </li>
+
+        <li class="menu-item {% if 'vending_machines' == request.resolver_match.url_name %}active{% endif %}">
+          <a href="{% url 'vending_machines' %}" class="menu-link">
+            <div class="text-truncate" data-i18n="Analytics">Автоматы</div>
+          </a>
+        </li>
+  </ul>
+</aside>

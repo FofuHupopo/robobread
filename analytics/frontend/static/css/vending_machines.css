@@ -1,0 +1,15 @@
+.status-circle {
+    width: 15px;
+    height: 15px;
+    border-radius: 50%;
+    display: inline-block;
+    margin-right: 8px;
+}
+
+.status-active {
+    background-color: #00FF00;
+}
+
+.status-inactive {
+    background-color: red;
+}
