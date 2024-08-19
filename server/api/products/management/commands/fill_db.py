@@ -5,18 +5,18 @@ import json
 from api.products.models import CategoryModel, ProductModel, CellModel
 
 
-FAKER_PATH = "api/products/management/commands/faker.json"
+DATA_PATH = "api/products/management/commands/faker.json"
 
 
 class Command(BaseCommand):
     help = 'Fill the database with mock data'
 
     def handle(self, *args, **options):
-        fake_categories()
+        fill_categories()
 
 
-def fake_categories():
-    categories = json.load(open(FAKER_PATH))
+def fill_categories():
+    categories = json.load(open(DATA_PATH))
 
     for category_data in categories:
         category_instance = CategoryModel.objects.create(
@@ -24,10 +24,10 @@ def fake_categories():
             image=category_data["image"]
         )
         
-        fake_products(category_instance, category_data.get("products", []))
+        fill_products(category_instance, category_data.get("products", []))
 
 
-def fake_products(category: CategoryModel, products_data: list[dict]):
+def fill_products(category: CategoryModel, products_data: list[dict]):
     for product in products_data:
         product_instance = ProductModel.objects.create(
             name=product["name"],
@@ -37,13 +37,3 @@ def fake_products(category: CategoryModel, products_data: list[dict]):
             category=category,
             image=product["image"]
         )
-
-        for cell in product["cells"]:
-            max_count = product["max_count"]
-
-            CellModel.objects.create(
-                number=cell,
-                count=random.randint(0, max_count),
-                max_count=max_count,
-                product=product_instance
-            )

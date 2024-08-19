@@ -1,10 +1,16 @@
+import os
+
 from rest_framework.request import Request
 from rest_framework.response import Response
 from rest_framework import status
 from rest_framework.views import APIView
 from constance import config
+from dotenv import load_dotenv
 
 from api.utils import InteractionCommand
+
+
+load_dotenv()
 
 
 class CheckCodeView(APIView):
@@ -26,3 +32,11 @@ class CheckCodeView(APIView):
             return Response({
                 "message": "Code is not correct"
             }, status.HTTP_400_BAD_REQUEST)
+
+
+class VendingMachineInfoView(APIView):
+    def get(self, request: Request):
+        return Response({
+            "name": os.getenv("VENDING_MACHINE_NAME"),
+            "address": os.getenv("VENDING_MACHINE_ADDRESS")
+        }, status.HTTP_200_OK)

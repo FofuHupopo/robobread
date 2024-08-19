@@ -5,4 +5,5 @@ from . import views
 
 urlpatterns = [
     path("check-code", views.CheckCodeView.as_view(), name="security__check_code"),
+    path("info", views.VendingMachineInfoView.as_view(), name="security__info"),
 ]

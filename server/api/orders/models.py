@@ -23,11 +23,6 @@ class OrderModel(models.Model):
         default=timezone.now,
     )
 
-    paid_at = models.DateTimeField(
-        verbose_name='Дата создания',
-        null=True, blank=True
-    )
-
     is_paid = models.BooleanField(
         verbose_name='Оплачено?',
         default=False

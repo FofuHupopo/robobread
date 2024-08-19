@@ -38,6 +38,11 @@ class ProductListAPIView(generics.ListAPIView):
         return list(filter(lambda product: not product.is_empty, queryset))
 
 
+class AllProductListAPIView(generics.ListAPIView):
+    queryset = models.ProductModel.objects.all()
+    serializer_class = serializers.ProductSerializer
+
+
 class ProductDetailAPIView(generics.ListAPIView):
     queryset = models.ProductModel.objects.all()
     serializer_class = serializers.ProductSerializer

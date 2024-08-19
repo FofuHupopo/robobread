@@ -3,6 +3,20 @@ from django.contrib import admin
 from . import models
 
 
-admin.site.register(models.CategoryModel)
-admin.site.register(models.ProductModel)
+class ProductInline(admin.TabularInline):
+    model = models.ProductModel
+    extra = 1
+
+
+@admin.register(models.CategoryModel)
+class CategoryAdmin(admin.ModelAdmin):
+    inlines = [ProductInline] 
+
+
+@admin.register(models.ProductModel)
+class ProductAdmin(admin.ModelAdmin):
+    model = models.ProductModel
+    list_filter = ('category',)
+
+
 admin.site.register(models.CellModel)

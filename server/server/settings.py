@@ -5,7 +5,6 @@ from .utils import getenv
 
 BASE_DIR = Path(__file__).resolve().parent.parent
 
-
 SECRET_KEY = getenv("SECRET_KEY")
 
 DEBUG = getenv("DEBUG") == "true"
@@ -35,6 +34,7 @@ INSTALLED_APPS = [
     'api.products',
     'api.payment',
     'api.orders',
+    'api.security',
 ]
 
 MIDDLEWARE = [
@@ -105,7 +105,7 @@ AUTH_PASSWORD_VALIDATORS = [
 
 LANGUAGE_CODE = 'ru'
 
-TIME_ZONE = 'Europe/Moscow'
+TIME_ZONE = 'Asia/Novosibirsk'
 
 USE_I18N = True
 
