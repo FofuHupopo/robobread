@@ -1,6 +1,7 @@
 import os
 from django.core.management import execute_from_command_line
 
+from .createsuperuser import main as createsuperuser
 from .utils import load_env
 
 
@@ -12,6 +13,7 @@ def main():
 
     execute_from_command_line(['manage.py', 'collectstatic', '--noinput'])
     execute_from_command_line(['manage.py', 'migrate'])
+    createsuperuser()
     execute_from_command_line(['manage.py', 'runserver', f"{host}:{port}"])
 
 
