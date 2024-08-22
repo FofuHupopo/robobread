@@ -20,3 +20,7 @@ def main():
         print(f'Superuser {username} created successfully!')
     else:
         print(f'Superuser {username} already exists.')
+
+
+if __name__ == "__main__":
+    main()

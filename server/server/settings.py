@@ -7,6 +7,8 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 
 SECRET_KEY = getenv("SECRET_KEY")
 
+ALLOW_INTERACTION = getenv("ALLOW_INTERACTION") == "true"
+
 DEBUG = getenv("DEBUG") == "true"
 
 ALLOWED_HOSTS = [

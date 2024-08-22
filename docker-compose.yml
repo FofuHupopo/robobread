@@ -1,63 +1,106 @@
 services:
+  # Nginx
+  # nginx:
+  #   container_name: nginx
+  #   build:
+  #     context: ./nginx
+  #   ports:
+  #     - "80:80"
+  #     - "443:443"
+  #   networks:
+  #     - backbone
+  #   depends_on:
+  #     - server
+
   # Backend
-  server:
-    container_name: server
-    hostname: server
-    restart: always
-    build:
-      context: ./server
-    ports:
-      - "8000:8000"
-    expose:
-      - 8000
-    networks:
-      - backbone
+  # server:
+  #   container_name: server
+  #   hostname: server
+  #   restart: always
+  #   build:
+  #     context: ./server
+  #   ports:
+  #     - "8000:8000"
+  #   expose:
+  #     - 8000
+  #   networks:
+  #     - backbone
 
-  interaction:
-    container_name: interaction
-    hostname: interaction
-    restart: always
-    build:
-      context: ./interaction
-    ports:
-      - "8001:8001"
-    expose:
-      - 8001
-    env_file:
-      - ./interaction/.env
-    networks:
-      - backbone
+  # interaction:
+  #   container_name: interaction
+  #   hostname: interaction
+  #   restart: always
+  #   build:
+  #     context: ./interaction
+  #   ports:
+  #     - "8001:8001"
+  #   expose:
+  #     - 8001
+  #   env_file:
+  #     - ./interaction/.env
+  #   networks:
+  #     - backbone
 
-  terminal:
-    container_name: terminal
-    hostname: terminal
+  # terminal:
+  #   container_name: terminal
+  #   hostname: terminal
+  #   restart: always
+  #   build:
+  #     context: ./terminal
+  #   ports:
+  #     - "8002:8002"
+  #   expose:
+  #     - 8002
+  #   env_file:
+  #     - ./terminal/.env
+  #   networks:
+  #     - backbone
+
+  # packing:
+  #   container_name: packing
+  #   hostname: packing
+  #   restart: always
+  #   build:
+  #     context: ./packing
+  #   ports:
+  #     - "8003:8003"
+  #   expose:
+  #     - 8003
+  #   env_file:
+  #     - ./packing/.env
+  #   networks:
+  #     - backbone
+  
+  analytics:
+    container_name: analytics
+    hostname: analytics
     restart: always
     build:
-      context: ./terminal
+      context: ./analytics
     ports:
-      - "8002:8002"
+      - "8004:8004"
     expose:
-      - 8002
+      - 8004
     env_file:
-      - ./terminal/.env
+      - ./analytics/.env
     networks:
       - backbone
 
   # Frontend
-  client:
-    container_name: client
-    hostname: client
-    restart: always
-    build:
-      context: ./client
-    ports:
-      - "3000:3000"
-    expose:
-      - 3000
-    depends_on:
-     - server
-    networks:
-      - backbone
+  # client:
+  #   container_name: client
+  #   hostname: client
+  #   restart: always
+  #   build:
+  #     context: ./client
+  #   ports:
+  #     - "3000:3000"
+  #   expose:
+  #     - 3000
+  #   depends_on:
+  #    - server
+  #   networks:
+  #     - backbone
 
 networks:
   backbone:

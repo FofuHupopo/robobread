@@ -9,11 +9,10 @@ def main():
     load_env()
 
     host = "0.0.0.0"
-    port = os.getenv('PORT', 8000)
+    port = os.getenv('PORT', 8004)
 
-    execute_from_command_line(['manage.py', 'collectstatic', '--noinput'])
-    execute_from_command_line(['manage.py', 'migrate'])
-    createsuperuser()
+    # execute_from_command_line(['manage.py', 'migrate'])
+    # createsuperuser()
     execute_from_command_line(['manage.py', 'runserver', f"{host}:{port}"])
 
 

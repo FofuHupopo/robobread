@@ -1,14 +1,19 @@
-FROM python:3.12 as builder
-
-ENV PATH="/root/.local/bin:${PATH}"
-ENV PYTHONUNBUFFERED=1
-ENV IS_DOCKER="true"
+FROM python:3.12-slim
 
 WORKDIR /app
 
-RUN curl -sSL https://install.python-poetry.org | python3 -
+RUN apt-get update && \
+    apt-get install -y curl && \
+    curl -sSL https://install.python-poetry.org | python3
+
+ENV PATH="/root/.local/bin:$PATH"
+ENV PYTHONUNBUFFERED=1
+ENV IS_DOCKER="true"
+
+COPY pyproject.toml poetry.lock* /app/
+
+RUN poetry install --no-root --no-dev
 
 COPY . .
-RUN poetry install
 
-CMD ["poetry", "run", "build"]
+CMD ["poetry", "run", "python", "manage.py", "runserver", "0.0.0.0:8004"]
