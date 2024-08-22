@@ -21,7 +21,7 @@ class ProductService:
 
     @classmethod
     def get_products(cls):
-        return ProductService._request(requests.get, "product").json()
+        return ProductService._request(requests.get, "all-product").json()
     
     @classmethod
     def patch_product(cls, id, item):
