@@ -33,6 +33,7 @@ def fill_products(category: CategoryModel, products_data: list[dict]):
             name=product["name"],
             description=product["description"],
             composition="Мука, вода, соль, масло, яйца, шоколад, сахар",
+            sku=product["sku"],
             price=product["price"],
             category=category,
             image=product["image"]

@@ -48,6 +48,11 @@ class ProductModel(models.Model):
         "Состав", default="",
         null=True, blank=True
     )
+
+    sku = models.CharField(
+        "Артикул", unique=True,
+        editable=False, max_length=128
+    )
     
     category = models.ForeignKey(
         CategoryModel,
