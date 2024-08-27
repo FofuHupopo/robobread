@@ -14,4 +14,7 @@ urlpatterns = [
 
     path("cell", views.CellListAPIView.as_view(), name="products__cell_list"),
     path("cell/<int:pk>", views.CellDetailAPIView.as_view(), name="products__cell_deyail"),
+
+    path("cell/<int:cell>/products", views.ProductInCellView.as_view(), name="products__products_in_cell"),
+    path("cell/<int:cell>/products/<int:pk>", views.ProductInCellDetailView.as_view(), name="products__products_in_cell_detail"),
 ]

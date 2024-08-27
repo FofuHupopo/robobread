@@ -1,5 +1,9 @@
+from typing import Type
+
 from django.db import models
-import json
+from django.db.models.signals import post_save, pre_delete
+from django.dispatch import receiver
+from django.utils import timezone
 
 
 def category_image_upload_path(instance: models.Model, filename: str) -> str:
@@ -50,6 +54,10 @@ class ProductModel(models.Model):
         on_delete=models.CASCADE
     )
 
+    expiration_date = models.DurationField(
+        "Срок годности", default=timezone.timedelta(0)
+    )
+
     price = models.IntegerField(
         "Стоимость (в копейках)", default=10000
     )
@@ -61,21 +69,25 @@ class ProductModel(models.Model):
     )
 
     @property
-    def is_empty(self) -> bool:
+    def is_can_sell(self) -> bool:
         for cell in self.cells.all():
-            if cell.count > 0:
-                return False
+            cell: CellModel
 
-        return True
+            if cell.is_can_sell:
+                return True
+
+        return False
 
     class Meta:
         verbose_name = "Товар"
         verbose_name_plural = "Товары"
         db_table = "products__products"
     
-    def get_first_not_empty_cell(self) -> "CellModel":
+    def get_first_available_cell(self) -> "CellModel":
         for cell in self.cells.all():
-            if cell.count > 0:
+            cell: CellModel
+
+            if cell.is_can_sell:
                 return cell
             
         return None
@@ -85,6 +97,14 @@ class ProductModel(models.Model):
     
     def __repr__(self) -> str:
         return f"ProductModel<name={self.name}, category={self.category.name}>"
+    
+
+class CellError(Exception):
+    """
+    Machine cell errors
+    """
+    def __call__(self, message):
+        return f"{self.__class__.__name__}, {message}"
 
 
 class CellModel(models.Model):
@@ -94,7 +114,7 @@ class CellModel(models.Model):
     )
 
     count = models.IntegerField(
-        "Количество", default=0
+        "Количество", default=0,
     )
 
     max_count = models.IntegerField(
@@ -110,8 +130,94 @@ class CellModel(models.Model):
         verbose_name_plural = "Ячейки"
         db_table = "products__cells"
 
+    @property
+    def is_can_sell(self) -> bool:
+        if self.count <= 0 or self.products.count() <= 0:
+            return False
+
+        product_in_cell: ProductInCellModel = self.products.first()
+
+        expiration_date = product_in_cell.upload_date + product_in_cell.expiration_date
+
+        if expiration_date < timezone.now():
+            return False
+        
+        return True
+
+    @property
+    def is_can_add_product(self) -> bool:
+        return self.count < self.max_count
+
+    def add_product(self, upload_date=None, expiration_date=None) -> "ProductInCellModel":
+        product_detail = ProductInCellModel.objects.create(
+            cell=self,
+        )
+
+        if upload_date:
+            product_detail.upload_date = upload_date
+        
+        if expiration_date:
+            product_detail.expiration_date = expiration_date
+
+        product_detail.save()
+
+        return product_detail
+
     def __str__(self) -> str:
         return f"Номер: {self.number}, Товар: {self.product.name}"
 
     def __repr__(self) -> str:
         return f"<CellModel number={self.number}, product={self.product.name}>"
+
+
+class ProductInCellModel(models.Model):
+    cell = models.ForeignKey(
+        CellModel, models.CASCADE,
+        verbose_name="Ячейка",
+        related_name="products"
+    )
+
+    upload_date = models.DateTimeField(
+        "Дата загрузки", default=timezone.now
+    )
+
+    expiration_date = models.DurationField(
+        "Срок годности",
+        blank=True, null=True
+    )
+
+    class Meta:
+        db_table = "products__product_details"
+        verbose_name = "Товар в ячейке"
+        verbose_name_plural = "Товары в ячейках"
+
+    def save(self, *args, **kwargs) -> None:
+        if not self.expiration_date and self.cell.product:
+            self.expiration_date = self.cell.product.expiration_date
+
+        if not self.pk and not self.cell.is_can_add_product:
+            raise CellError("There is not enough space in the cell")
+
+        return super().save(*args, **kwargs)
+
+    def __str__(self) -> str:
+        return f"{self.cell.product.name} в ячейке {self.cell.number} (срок годности: {self.upload_date + self.expiration_date})"
+
+
+@receiver(post_save, sender=ProductInCellModel)
+def create_product_in_cell(
+        sender: Type[ProductInCellModel], instance: ProductInCellModel, created, **kwargs
+    ):
+    if not created:
+        return
+
+    instance.cell.count += 1
+    instance.cell.save()
+
+
+@receiver(pre_delete, sender=ProductInCellModel)
+def delete_product_in_cell(
+        sender: Type[ProductInCellModel], instance: ProductInCellModel, **kwargs
+    ):
+    instance.cell.count -= 1
+    instance.cell.save()

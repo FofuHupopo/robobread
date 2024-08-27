@@ -19,4 +19,8 @@ class ProductAdmin(admin.ModelAdmin):
     list_filter = ('category',)
 
 
-admin.site.register(models.CellModel)
+@admin.register(models.CellModel)
+class CellAdmin(admin.ModelAdmin):
+    readonly_fields = ('count', )
+
+admin.site.register(models.ProductInCellModel)

@@ -59,7 +59,7 @@ class PaymentView(APIView):
             product = order.product
             
             if not product.is_empty:
-                cell = product.get_first_not_empty_cell()
+                cell = product.get_first_available_cell()
 
                 InteractionCommand().sell_item(cell.number)
 

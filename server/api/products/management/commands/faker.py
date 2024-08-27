@@ -1,8 +1,11 @@
-from django.core.management.base import BaseCommand
-import random
 import json
+import random
+from django.core.management.base import BaseCommand
+from django.utils import timezone
 
-from api.products.models import CategoryModel, ProductModel, CellModel
+from api.products.models import (
+    CategoryModel, ProductModel, CellModel, ProductInCellModel
+)
 
 
 FAKER_PATH = "api/products/management/commands/faker.json"
@@ -35,15 +38,22 @@ def fake_products(category: CategoryModel, products_data: list[dict]):
             composition="Мука, вода, соль, масло, яйца, шоколад, сахар",
             price=product["price"],
             category=category,
-            image=product["image"]
+            image=product["image"],
+            expiration_date=timezone.timedelta(days=3)
         )
 
         for cell in product["cells"]:
             max_count = product["max_count"]
 
-            CellModel.objects.create(
+            cell = CellModel.objects.create(
                 number=cell,
-                count=random.randint(0, max_count),
                 max_count=max_count,
                 product=product_instance
             )
+
+            count = random.randint(0, max_count)
+
+            for _ in range(count):
+                cell.add_product(
+                    expiration_date=timezone.timedelta(days=3)
+                )
