@@ -16,7 +16,7 @@ class CategoryModel(models.Model):
     )
     image = models.ImageField(
         "Изображение",
-        default="categories/default.png",
+        default="default.jpeg",
         upload_to=category_image_upload_path
     )
 
@@ -64,7 +64,7 @@ class ProductModel(models.Model):
 
     image = models.ImageField(
         "Изображение",
-        default="products/default.png",
+        default="default.jpeg",
         upload_to=product_image_upload_path
     )
 
