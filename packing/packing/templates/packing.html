@@ -30,8 +30,15 @@
                     <div class="enter-count{{ cell.id }}">
                         <input class="count-enter" id="count-enter{{ cell.id }}" type="number" value="{{ cell.count }}" max="{{ cell.max_count }}"> <p> / </p> <p> {{ cell.max_count }}</p>
                     </div>
-                    <button class="fill fill{{ cell.id }}" onclick="fillItem('{{ cell.id }}')">Заполнить</button>
+                    <button class="fill fill{{ cell.id }}" id="fill{{ cell.id }}" {% if cell.needs_to_remove != 0 %} disabled {% endif %} onclick="fillItem('{{ cell.id }}')">Заполнить</button>
                 </div>
+                {% if cell.needs_to_remove != 0 %}
+                <div id="needs_to_remove{{ cell.id }}">
+                    <p class="item-label red">Необходимо убрать:</p>
+                    <p class="red needs_to_remove_value" id="needs_to_remove_value{{ cell.id }}">{{ cell.needs_to_remove }}</p>
+                    <button class="remove remove{{ cell.id }}" onclick="removeItem('{{ cell.id }}')">Изъять</button>
+                </div>
+                {% endif %}
             </div>
             {% endfor %}
         

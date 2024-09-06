@@ -9,6 +9,8 @@ SECRET_KEY = getenv("SECRET_KEY")
 
 DEBUG = getenv("DEBUG") == "true"
 
+VENDING_MACHINES_PROTOCOL = getenv("VENDING_MACHINES_PROTOCOL")
+
 ALLOWED_HOSTS = [
     "*"
 ]
@@ -27,9 +29,12 @@ INSTALLED_APPS = [
     'drf_spectacular',
 
     # API
+    'api.vending_machines',
+    'api.packing',
+    'api.products',
 
     # Frontend
-    'frontend'
+    'frontend',
 ]
 
 MIDDLEWARE = [
@@ -40,6 +45,8 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+
+    'api.middlewares.ServiceResponseExceptionMiddleware',
 ]
 
 ROOT_URLCONF = 'config.urls'

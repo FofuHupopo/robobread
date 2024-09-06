@@ -1,4 +1,5 @@
 from typing import Type
+import os
 
 from django.db import models
 from django.db.models.signals import post_save, pre_delete
@@ -6,13 +7,16 @@ from django.dispatch import receiver
 from django.utils import timezone
 
 
-def category_image_upload_path(instance: models.Model, filename: str) -> str:
-        return f"categories/{instance.pk}/{filename}"
+def category_image_upload_path(instance: "CategoryModel", filename: str) -> str:
+        return f"categories/{instance.sku}__{filename}"
 
 
 class CategoryModel(models.Model):
     name = models.CharField(
         "Название", max_length=255
+    )
+    sku = models.CharField(
+        "Артикул", unique=True, max_length=128
     )
     image = models.ImageField(
         "Изображение",
@@ -27,13 +31,23 @@ class CategoryModel(models.Model):
         
     def __str__(self) -> str:
         return f"{self.name}"
-    
+
     def __repr__(self) -> str:
         return f"CategoryModel<name={self.name}>"
 
+    def save(self, *args, **kwargs):
+        if self.pk is not None:
+            old_image = CategoryModel.objects.get(pk=self.pk).image
 
-def product_image_upload_path(instance: models.Model, filename: str) -> str:
-        return f"products/{instance.pk}/{filename}"
+            if old_image and old_image != self.image:
+                if os.path.isfile(old_image.path):
+                    os.remove(old_image.path)
+
+        super(CategoryModel, self).save(*args, **kwargs)
+
+
+def product_image_upload_path(instance: "ProductModel", filename: str) -> str:
+        return f"products/{instance.sku}__{filename}"
 
 
 class ProductModel(models.Model):
@@ -50,8 +64,7 @@ class ProductModel(models.Model):
     )
 
     sku = models.CharField(
-        "Артикул", unique=True,
-        editable=False, max_length=128
+        "Артикул", max_length=128, unique=True
     )
     
     category = models.ForeignKey(
@@ -102,7 +115,17 @@ class ProductModel(models.Model):
     
     def __repr__(self) -> str:
         return f"ProductModel<name={self.name}, category={self.category.name}>"
-    
+
+    def save(self, *args, **kwargs):
+        if self.pk is not None:
+            old_image = ProductModel.objects.get(pk=self.pk).image
+
+            if old_image and old_image != self.image:
+                if os.path.isfile(old_image.path):
+                    os.remove(old_image.path)
+
+        super(ProductModel, self).save(*args, **kwargs)
+
 
 class CellError(Exception):
     """
@@ -167,6 +190,9 @@ class CellModel(models.Model):
         product_detail.save()
 
         return product_detail
+    
+    def remove_product(self):
+        self.products.first().delete()
 
     def __str__(self) -> str:
         return f"Номер: {self.number}, Товар: {self.product.name}"

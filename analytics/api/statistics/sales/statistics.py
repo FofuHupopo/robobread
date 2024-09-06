@@ -1,7 +1,7 @@
 from typing import List, Mapping
 from django.utils.timezone import datetime, timedelta
 
-from .data import SaleData
+from .data import SaleData, RevenueData
 
 
 class SalesStatistics:
@@ -72,25 +72,31 @@ class SalesStatistics:
                     continue
 
                 revenue += sale.amount
-        
-        print(revenue)
 
         return {
             "revenue": revenue
         }
 
     def revenue_for_the_week(self) -> Mapping[str, float]:
-        revenue_for_the_week = [0] * 7
-        date_list = []
         total = 0
 
         current_date = datetime.now()
-        one_week_ago = current_date - timedelta(days=7)
+        one_week_ago = current_date - timedelta(days=6)
+
+        revenue_for_the_week: list[RevenueData] = []
+        for day in range(7):
+            revenue_for_the_week.append(RevenueData(
+                value=0,
+                day=(one_week_ago + timedelta(days=day)).strftime("%d.%m")
+            ))
 
         for data_object in self.data_objects:
             for sale in data_object.sales:
                 if not sale.is_paid:
                     continue
+
+                if isinstance(sale.created_at, str):
+                    sale.created_at = datetime.fromisoformat(sale.created_at)
 
                 if sale.created_at.date() < one_week_ago.date():
                     continue
@@ -98,14 +104,13 @@ class SalesStatistics:
                 print(sale.created_at)
 
                 current_day = sale.created_at.date().day
-                index = current_day - one_week_ago.date().day
+                index = (sale.created_at.date() - one_week_ago.date()).days
 
-                revenue_for_the_week[index] += sale.amount
+                print(index, type(index))
+
+                revenue_for_the_week[index].value += sale.amount
                 total += sale.amount
 
-        print(revenue_for_the_week)
-
-        
         return {
             "revenue_for_the_week": revenue_for_the_week,
             "total": total

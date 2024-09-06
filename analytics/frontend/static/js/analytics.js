@@ -232,22 +232,11 @@ document.addEventListener('DOMContentLoaded', async () => {
 document.addEventListener('DOMContentLoaded', async () => {
   const data = await getRequest("statistics/sales/revenue-for-the-week");
 
-  const revenueForTheWeek = data.revenue_for_the_week.map((item) => item / 100);
+  const valuesArray = data.revenue_for_the_week.map((item) => item.value / 100);
+  const daysArray = data.revenue_for_the_week.map((item) => item.day);
   const total = data.total
 
-  var currentDate = new Date();  
-
-  const datesArray = [];
-
-  for (let i = 6; i >= 0; i--) {
-      const pastDate = new Date(currentDate);
-      pastDate.setDate(currentDate.getDate() - i);
-      
-      const day = String(pastDate.getDate()).padStart(2, '0');
-      const month = String(pastDate.getMonth() + 1).padStart(2, '0');
-
-      datesArray.push(`${day}.${month}`);
-  }
+  console.log(valuesArray, daysArray)
 
   const profileReportChartEl = document.querySelector('#revenueForTheWeekChart'),
     profileReportChartConfig = {
@@ -287,11 +276,11 @@ document.addEventListener('DOMContentLoaded', async () => {
       series: [
         {
           name: 'Выручка',
-          data: revenueForTheWeek,
+          data: valuesArray,
         }
       ],
       xaxis: {
-        categories: datesArray,
+        categories: daysArray,
         show: false,
         lines: {
           show: false

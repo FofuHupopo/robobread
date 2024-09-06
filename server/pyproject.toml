@@ -21,7 +21,7 @@ requires = ["poetry-core"]
 build-backend = "poetry.core.masonry.api"
 
 [tool.poetry.scripts]
-runserver = "scripts.runserver:main"
+server = "scripts.runserver:main"
 createsuperuser = "scripts.createsuperuser:main"
 migrate = "scripts.migrate:main"
 build = "scripts.build:main"

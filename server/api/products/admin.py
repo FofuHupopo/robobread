@@ -21,6 +21,6 @@ class ProductAdmin(admin.ModelAdmin):
 
 @admin.register(models.CellModel)
 class CellAdmin(admin.ModelAdmin):
-    readonly_fields = ('count', )
+    readonly_fields = ('id', 'count', )
 
 admin.site.register(models.ProductInCellModel)

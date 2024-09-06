@@ -13,7 +13,7 @@ def run_if_allow_interaction(method):
             result = method(self, *args, **kwargs)
             return result
         
-        print("The command has not been sent, check it.env file")
+        print("The command has not been sent, check the .env file")
 
     return wrapper
 

@@ -4,8 +4,8 @@ from rest_framework_dataclasses.serializers import DataclassSerializer
 
 from api.core.serializers import VendingMachineSerializer
 from . import models
-from api.statistics.sales.services import SaleData
-from api.statistics.products.services import ProductData
+from api.statistics.sales.data import SaleData, RevenueData
+from api.statistics.products.data import ProductData
 
 
 class SalesSerializer(serializers.ModelSerializer):
@@ -56,8 +56,15 @@ class RevenueSerializer(serializers.Serializer):
     revenue = serializers.FloatField()
 
 
+class RevenueForTheWeekItemSerializer(DataclassSerializer):
+    class Meta:
+        dataclass = RevenueData
+
+
 class RevenueForTheWeekSerializer(serializers.Serializer):
-    revenue_for_the_week = serializers.ListField(child=serializers.IntegerField(), max_length=7, min_length=7)
+    revenue_for_the_week = serializers.ListField(
+        child=RevenueForTheWeekItemSerializer(), max_length=7, min_length=7
+    )
     total = serializers.IntegerField()
 
 

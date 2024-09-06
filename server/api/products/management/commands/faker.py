@@ -24,6 +24,7 @@ def fake_categories():
     for category_data in categories:
         category_instance = CategoryModel.objects.create(
             name=category_data["name"],
+            sku=category_data["sku"],
             image=category_data["image"]
         )
         

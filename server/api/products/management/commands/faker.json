@@ -2,6 +2,7 @@
   {
     "name": "Круассаны",
     "image": "categories/croissant.png",
+    "sku": "croissant",
     "products": [
       {
         "name": "Классический круассан",
@@ -62,6 +63,7 @@
   {
     "name": "Пироги",
     "image": "categories/pie.png",
+    "sku": "pie",
     "products": [
       {
         "name": "Курник",
@@ -113,6 +115,7 @@
   {
     "name": "Пицца",
     "image": "categories/pizza.png",
+    "sku": "pizza",
     "products": [
       {
         "name": "Пицца пеперони с халапеньо",
@@ -164,6 +167,7 @@
   {
     "name": "Горячие блюда",
     "image": "categories/hot_dishes.png",
+    "sku": "hot_dishes",
     "products": [
       {
         "name": "Котлеты с картофельным пюре",
@@ -197,6 +201,7 @@
   {
     "name": "Бургеры",
     "image": "categories/burger.png",
+    "sku": "burger",
     "products": [
       {
         "name": "Russian Lumberjack бургер",
@@ -230,6 +235,7 @@
   {
     "name": "Шаурма",
     "image": "categories/shaurma.png",
+    "sku": "shaurma",
     "products": [
       {
         "name": "Шаурма сырная",
