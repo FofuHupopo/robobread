@@ -10,10 +10,12 @@ from . import models
     get=extend_schema(
         summary="Получение списка автоматов",
         description="Возвращает список автоматов",
+        tags=["Торговые автоматы"],
     ),
     post=extend_schema(
         summary="Создание автомата",
         description="Создает автомат",
+        tags=["Торговые автоматы"],
     ),
 )
 class VendingMachineListView(generics.ListCreateAPIView):
@@ -26,18 +28,22 @@ class VendingMachineListView(generics.ListCreateAPIView):
     get=extend_schema(
         summary="Получение автомата по id",
         description="Возвращает автомат по id",
+        tags=["Торговые автоматы"],
     ),
     put=extend_schema(
         summary="Обновление автомата",
         description="Обновляет автомат",
+        tags=["Торговые автоматы"],
     ),
     patch=extend_schema(
         summary="Обновление автомата",
         description="Обновляет автомат",
+        tags=["Торговые автоматы"],
     ),
     delete=extend_schema(
         summary="Удаление автомата",
         description="Удаляет автомат",
+        tags=["Торговые автоматы"],
     ),
 )
 class VendingMachineDetailView(generics.RetrieveUpdateDestroyAPIView):

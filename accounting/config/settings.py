@@ -99,7 +99,7 @@ AUTH_PASSWORD_VALIDATORS = [
 
 LANGUAGE_CODE = 'ru'
 
-TIME_ZONE = 'Asia/Novosibirsk'
+TIME_ZONE = 'UTC'
 
 USE_I18N = True
 
@@ -129,8 +129,10 @@ CORS_ALLOW_METHODS = [
 ]
 
 
-DATA_UPLOAD_MAX_MEMORY_SIZE = 1024 * 1024 * 20  # 20 MB
-FILE_UPLOAD_MAX_MEMORY_SIZE = 1024 * 1024 * 20  # 20 MB
+TWENTY_MEGABYTES = 20 * 1024 * 1024
+
+DATA_UPLOAD_MAX_MEMORY_SIZE = TWENTY_MEGABYTES
+FILE_UPLOAD_MAX_MEMORY_SIZE = TWENTY_MEGABYTES
 
 
 REST_FRAMEWORK = {
@@ -144,3 +146,17 @@ REST_FRAMEWORK = {
     'DEFAULT_SCHEMA_CLASS': 'drf_spectacular.openapi.AutoSchema'
 }
 
+SPECTACULAR_SETTINGS = {
+    'TITLE': 'Accounting API',
+    'DESCRIPTION': 'API для сервиса учета товаров и затаривания',
+    'VERSION': '1.0.0',
+    'SERVE_INCLUDE_SCHEMA': False,
+    'TAGS': [
+        {'name': 'Затаривание', 'description': 'Затаривания каждого автомата'},
+        {'name': 'Синхронизация', 'description': 'Синхроназация с автоматом (Для проверки в сети ли он)'},
+        {'name': 'Категории автомата', 'description': 'Управление категориями в автомате'},
+        {'name': 'Ячейки автомата', 'description': 'Управление ячейками в автомате'},
+        {'name': 'Товары автомата', 'description': 'Управление товарами в автомате'},
+    ],
+
+}

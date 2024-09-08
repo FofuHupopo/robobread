@@ -18,7 +18,8 @@ from api.vending_machines.vending_machines.utils import get_vending_machine
         description="Получение списка категорий в автомате",
         responses={
             status.HTTP_200_OK: CategoryDataSerializer
-        }
+        },
+        tags=["Категории автомата"],
     ),
     post=extend_schema(
         summary="Добавление категории в список автомата",
@@ -26,7 +27,8 @@ from api.vending_machines.vending_machines.utils import get_vending_machine
         request=docs.CategoryRequestSerializer,
         responses={
             status.HTTP_201_CREATED: CategoryDataSerializer
-        }
+        },
+        tags=["Категории автомата"],
     ),
     delete=extend_schema(
         summary="Удаление категории из списка автомата",
@@ -42,7 +44,8 @@ from api.vending_machines.vending_machines.utils import get_vending_machine
         ],
         responses={
             status.HTTP_200_OK: CategoryDataSerializer
-        }
+        },
+        tags=["Категории автомата"],
     ),
     put=extend_schema(
         summary="Обновление категории в списке автомата",
@@ -50,7 +53,8 @@ from api.vending_machines.vending_machines.utils import get_vending_machine
         request=docs.CategoryRequestSerializer,
         responses={
             status.HTTP_200_OK: CategoryDataSerializer
-        }
+        },
+        tags=["Категории автомата"],
     )
 )
 class VendingMachineCategoryListView(APIView):

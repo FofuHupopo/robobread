@@ -10,11 +10,13 @@ from . import serializers
     get=extend_schema(
         summary='Получение списка категорий',
         description='Получение списка категорий',
+        tags=['Категории'],
     ),
     post=extend_schema(
         summary='Создание категории',
         description='Создание категории',
-    )
+        tags=['Категории'],
+    ),
 )
 class CategoryListView(generics.ListCreateAPIView):
     queryset = models.CategoryModel.objects.all()
@@ -24,19 +26,23 @@ class CategoryListView(generics.ListCreateAPIView):
 @extend_schema_view(
     get=extend_schema(
         summary='Получение категории',
-        description='Получение категории'
+        description='Получение категории',
+        tags=['Категории'],
     ),
     put=extend_schema(
         summary='Обновление категории',
         description='Обновление категории',
+        tags=['Категории'],
     ),
     patch=extend_schema(
         summary='Обновление категории',
         description='Обновление категории',
+        tags=['Категории'],
     ),
     delete=extend_schema(
         summary='Удаление категории',
-        description='Удаление категории'
+        description='Удаление категории',
+        tags=['Категории'],
     )
 )
 class CategoryDetailView(generics.RetrieveUpdateDestroyAPIView):
@@ -46,8 +52,8 @@ class CategoryDetailView(generics.RetrieveUpdateDestroyAPIView):
 
 @extend_schema_view(
     get=extend_schema(
-        summary='Получение списка продуктов',
-        description='Получение списка продуктов',
+        summary='Получение списка товаров',
+        description='Получение списка товаров',
         parameters=[
             OpenApiParameter(
                 name='category_id',
@@ -55,11 +61,13 @@ class CategoryDetailView(generics.RetrieveUpdateDestroyAPIView):
                 description='ID категории',
                 type=OpenApiTypes.INT
             )
-        ]
+        ],
+        tags=['Товары'],
     ),
     post=extend_schema(
-        summary='Создание продукта',
-        description='Создание продукта'
+        summary='Создание товара',
+        description='Создание товара',
+        tags=['Товары'],
     )
 )
 class ProductListView(generics.ListCreateAPIView):
@@ -69,7 +77,7 @@ class ProductListView(generics.ListCreateAPIView):
     def get_queryset(self):
         queryset = super().get_queryset()
 
-        query_params =self.request.query_params
+        query_params = self.request.query_params
 
         if "category_id" not in query_params:
             return queryset
@@ -83,20 +91,24 @@ class ProductListView(generics.ListCreateAPIView):
 
 @extend_schema_view(
     get=extend_schema(
-        summary='Получение продукта',
-        description='Получение продукта',
+        summary='Получение товара',
+        description='Получение товара',
+        tags=['Товары'],
     ),
     put=extend_schema(
-        summary='Обновление продукта',
-        description='Обновление продукта',
+        summary='Обновление товара',
+        description='Обновление товара',
+        tags=['Товары'],
     ),
     patch=extend_schema(
-        summary='Обновление продукта',
-        description='Обновление продукта',
+        summary='Обновление товара',
+        description='Обновление товара',
+        tags=['Товары'],
     ),
     delete=extend_schema(
-        summary='Удаление продукта',
-        description='Удаление продукта',
+        summary='Удаление товара',
+        description='Удаление товара',
+        tags=['Товары'],
     )
 )
 class ProductDetailView(generics.RetrieveUpdateDestroyAPIView):

@@ -14,6 +14,7 @@ from .utils import get_vending_machine
         summary="Синхронизация данных для одного аппарата",
         description="Синхронизация данных для одного аппарата",
         responses={200: serializers.VendingMachineDataSerializer},
+        tags=["Синхронизация"],
     )
 )
 class SyncOneVendingMachineView(APIView):
@@ -39,6 +40,7 @@ class SyncOneVendingMachineView(APIView):
         summary="Синхронизация данных для всех аппаратов",
         description="Синхронизация данных для всех аппаратов",
         responses={200: serializers.VendingMachineDataSerializer(many=True)},
+        tags=["Синхронизация"],
     )
 )
 class SyncVendingMachinesView(APIView):

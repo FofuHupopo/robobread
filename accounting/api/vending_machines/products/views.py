@@ -18,7 +18,8 @@ from api.vending_machines.vending_machines.utils import get_vending_machine
         description="Получение списка продуктов в автомате",
         responses={
             status.HTTP_200_OK: ProductDataSerializer
-        }
+        },
+        tags=["Товары автомата"],
     ),
     post=extend_schema(
         summary="Добавление продукта в список автомата",
@@ -26,7 +27,8 @@ from api.vending_machines.vending_machines.utils import get_vending_machine
         request=ProductRequestSerializer,
         responses={
             status.HTTP_201_CREATED: ProductDataSerializer
-        }
+        },
+        tags=["Товары автомата"],
     ),
     delete=extend_schema(
         summary="Удаление продукта из списка автомата",
@@ -42,7 +44,8 @@ from api.vending_machines.vending_machines.utils import get_vending_machine
         ],
         responses={
             status.HTTP_200_OK: ProductDataSerializer
-        }
+        },
+        tags=["Товары автомата"],
     ),
     put=extend_schema(
         summary="Обновление продукта в списке автомата",
@@ -50,7 +53,8 @@ from api.vending_machines.vending_machines.utils import get_vending_machine
         request=ProductRequestSerializer,
         responses={
             status.HTTP_200_OK: ProductDataSerializer
-        }
+        },
+        tags=["Товары автомата"],
     )
 )
 class VendingMachineProductListView(APIView):

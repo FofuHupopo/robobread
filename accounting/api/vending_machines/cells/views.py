@@ -18,7 +18,8 @@ from api.vending_machines.vending_machines.utils import get_vending_machine
         description="Получение списка ячеек в автомате",
         responses={
             status.HTTP_200_OK: CellDataSerializer
-        }
+        },
+        tags=["Ячейки автомата"],
     ),
     post=extend_schema(
         summary="Добавление ячейки в автомат",
@@ -26,7 +27,8 @@ from api.vending_machines.vending_machines.utils import get_vending_machine
         request=CreateCellDataSerializer,
         responses={
             status.HTTP_201_CREATED: CellDataSerializer
-        }
+        },
+        tags=["Ячейки автомата"],
     ),
     delete=extend_schema(
         summary="Удаление ячейки из автомата",
@@ -51,7 +53,8 @@ from api.vending_machines.vending_machines.utils import get_vending_machine
                     }
                 }
             },
-        }
+        },
+        tags=["Ячейки автомата"],
     ),
     put=extend_schema(
         summary="Обновление ячейки в автомате",
@@ -59,7 +62,8 @@ from api.vending_machines.vending_machines.utils import get_vending_machine
         request=UpdateCellDataSerializer,
         responses={
             status.HTTP_200_OK: CellDataSerializer
-        }
+        },
+        tags=["Ячейки автомата"],
     )
 )
 class VendingMachineCellListView(APIView):
