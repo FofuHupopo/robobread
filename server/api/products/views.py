@@ -65,7 +65,7 @@ class CellDetailAPIView(generics.RetrieveUpdateDestroyAPIView):
     def delete(self, request, *args, **kwargs):
         if self.get_object().count > 0:
             return Response(
-                {"message": "Нельзя удалить не пустую ячейку с товароми"},
+                {"message": "Нельзя удалить непустую ячейку с товароми"},
                 status=status.HTTP_403_FORBIDDEN
             )
 
