@@ -47,6 +47,7 @@ MIDDLEWARE = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 
     'api.middlewares.ServiceResponseExceptionMiddleware',
+    'api.middlewares.NoObjectExceptionMiddleware',
 ]
 
 ROOT_URLCONF = 'config.urls'

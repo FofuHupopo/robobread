@@ -1,7 +1,7 @@
 from dataclasses import dataclass
 
 from api.services import BaseData
-from . import models
+from .. import models
 
 
 @dataclass

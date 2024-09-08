@@ -13,8 +13,9 @@ class BaseData:
 
 
 class BaseService:
-    def __init__(self) -> None:
+    def __init__(self, base_url: str) -> None:
         self.URLS = dict()
+        self.BASE_URL = base_url
 
     def active_sync(self) -> BaseData:
         ...
@@ -56,3 +57,43 @@ class BaseService:
             )
 
         return response
+    
+    def get_request(self, sub_url: str) -> requests.Response:
+        r = self._request(
+            method=requests.get,
+            url=self.BASE_URL,
+            sub_url=sub_url,
+        )
+
+        return r
+    
+    def post_request(self, sub_url: str, data: dict, files: dict = {}) -> requests.Response:
+        r = self._request(
+            method=requests.post,
+            url=self.BASE_URL,
+            sub_url=sub_url,
+            data=data,
+            files=files
+        )
+
+        return r
+    
+    def put_request(self, sub_url: str, data: dict, files: dict = {}) -> requests.Response:
+        r = self._request(
+            method=requests.put,
+            url=self.BASE_URL,
+            sub_url=sub_url,
+            data=data,
+            files=files
+        )
+
+        return r
+    
+    def delete_request(self, sub_url: str) -> requests.Response:
+        r = self._request(
+            method=requests.delete,
+            url=self.BASE_URL,
+            sub_url=sub_url
+        )
+
+        return r

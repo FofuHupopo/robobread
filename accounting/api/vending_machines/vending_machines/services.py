@@ -3,14 +3,15 @@ from __future__ import annotations
 import requests
 
 from django.conf import settings
-from typing import List, Mapping
+from typing import List
 
 from api.services import BaseService
 from .data import VendingMachineData
-from . import models
+from .. import models
 
 
-PROTOCOL = getattr(settings, "VENDING_MACHINES_PROTOCOL")
+PROTOCOL: str = getattr(settings, "VENDING_MACHINES_PROTOCOL")
+BASE_URL = PROTOCOL + "://{}/api"
 
 URLS = {
     "info": "security/info",
@@ -19,10 +20,11 @@ URLS = {
 
 class VendingMachineService(BaseService):
     def __init__(self, vending_machine: models.VendingMachineModel) -> None:
-        super().__init__()
+        super().__init__(
+            base_url=BASE_URL.format(vending_machine.ip_address)
+        )
 
         self.vending_machine = vending_machine
-        self.VENDING_MACHINE_URL = f"{PROTOCOL}://{vending_machine.ip_address}/api"
         self.update_urls(URLS)
 
     def active_sync(self) -> VendingMachineData:
@@ -49,46 +51,6 @@ class VendingMachineService(BaseService):
             return True
         except requests.exceptions.ConnectionError:
             return False
-
-    def get_request(self, sub_url: str) -> requests.Response:
-        r = super()._request(
-            method=requests.get,
-            url=self.VENDING_MACHINE_URL,
-            sub_url=sub_url,
-        )
-
-        return r
-    
-    def post_request(self, sub_url: str, data: dict, files: dict = {}) -> requests.Response:
-        r = super()._request(
-            method=requests.post,
-            url=self.VENDING_MACHINE_URL,
-            sub_url=sub_url,
-            data=data,
-            files=files
-        )
-
-        return r
-    
-    def put_request(self, sub_url: str, data: dict, files: dict = {}) -> requests.Response:
-        r = super()._request(
-            method=requests.put,
-            url=self.VENDING_MACHINE_URL,
-            sub_url=sub_url,
-            data=data,
-            files=files
-        )
-
-        return r
-    
-    def delete_request(self, sub_url: str) -> requests.Response:
-        r = super()._request(
-            method=requests.delete,
-            url=self.VENDING_MACHINE_URL,
-            sub_url=sub_url
-        )
-
-        return r
 
     def _machine_info(self) -> None:
         response = self.get_request(self.URLS["info"])

@@ -13,3 +13,14 @@ class ServiceResponseExceptionMiddleware(MiddlewareMixin):
             )
 
         return None
+
+
+class NoObjectExceptionMiddleware(MiddlewareMixin):
+    def process_exception(self, request, exception):
+        if isinstance(exception, exceptions.NoObjectException):
+            return JsonResponse(
+                exception.response or {'error': str(exception)},
+                status=404
+            )
+
+        return None
