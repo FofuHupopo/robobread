@@ -85,7 +85,9 @@ class PackingSerializer(serializers.Serializer):
             for _ in range(added):
                 cell.add_product()
         else:
-            for _ in range(-added):
+            removed = min(-added, cell.count)
+
+            for _ in range(removed):
                 cell.remove_product()
 
         return {
