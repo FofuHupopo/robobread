@@ -20,8 +20,20 @@ class CategorySerializer(serializers.ModelSerializer):
         fields = "__all__"
 
 
+class ProductWithOutCellsSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = models.ProductModel
+        fields = (
+            'id', 'name', 'description', 'sku', 'composition',
+            'expiration_date', 'price', 'image',
+            'category',
+        )
+
+
 class CellSerializer(serializers.ModelSerializer):
-    products = ProductInCellSerializer(many=True)
+    products = ProductInCellSerializer(many=True, read_only=True)
+    product = ProductWithOutCellsSerializer(read_only=True)
+    product_id = serializers.IntegerField(write_only=True)
 
     class Meta:
         model = models.CellModel
@@ -61,8 +73,6 @@ class PackingSerializer(serializers.Serializer):
             raise serializers.ValidationError('Cell not found')
 
     def create(self, validated_data):
-        print(validated_data)
-
         cell: models.CellModel = validated_data.get("cell")
         count: int = validated_data.get("count")
         removed: int = validated_data.get("removed")
@@ -71,8 +81,12 @@ class PackingSerializer(serializers.Serializer):
         for _ in range(removed):
             cell.remove_product()
         
-        for _ in range(added):
-            cell.add_product()
+        if added >= 0:
+            for _ in range(added):
+                cell.add_product()
+        else:
+            for _ in range(-added):
+                cell.remove_product()
 
         return {
             "product_id": cell.product.pk,

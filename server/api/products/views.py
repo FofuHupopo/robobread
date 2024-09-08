@@ -53,14 +53,23 @@ class ProductDetailAPIView(generics.RetrieveUpdateDestroyAPIView):
     serializer_class = serializers.ProductSerializer
 
 
-class CellListAPIView(generics.ListAPIView):
+class CellListAPIView(generics.ListCreateAPIView):
     queryset = models.CellModel.objects.all()
     serializer_class = serializers.CellSerializer
 
 
-class CellDetailAPIView(generics.RetrieveUpdateAPIView):
+class CellDetailAPIView(generics.RetrieveUpdateDestroyAPIView):
     queryset = models.CellModel.objects.all()
     serializer_class = serializers.CellSerializer
+
+    def delete(self, request, *args, **kwargs):
+        if self.get_object().count > 0:
+            return Response(
+                {"message": "Нельзя удалить не пустую ячейку с товароми"},
+                status=status.HTTP_403_FORBIDDEN
+            )
+
+        return super().delete(request, *args, **kwargs)
 
 
 class ProductInCellView(APIView):

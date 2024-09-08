@@ -4,6 +4,7 @@ from . import views
 from .vending_machines import views as vending_machine_views
 from .categories import views as category_views
 from .products import views as product_views
+from .cells import views as cell_views
 
 
 app_name = 'vending_machines'
@@ -17,5 +18,5 @@ urlpatterns = [
 
     path('vending-machine/<int:vending_machine_id>/category', category_views.VendingMachineCategoryListView.as_view(), name="vending_machine_category_list"),
     path('vending-machine/<int:vending_machine_id>/product', product_views.VendingMachineProductListView.as_view(), name="vending_machine_product_list"),
-    
+    path('vending-machine/<int:vending_machine_id>/cell', cell_views.VendingMachineCellListView.as_view(), name="vending_machine_cell_list"),
 ]
