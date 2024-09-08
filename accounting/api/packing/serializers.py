@@ -29,7 +29,7 @@ class PackingSerializer(serializers.ModelSerializer):
     added_items = PackingAddedItemSerializer(many=True)
     removed_items = PackingAddedItemSerializer(many=True)
     vending_machine = VendingMachineSerializer(read_only=True)
-    vending_machine_id = serializers.IntegerField()
+    vending_machine_id = serializers.IntegerField(write_only=True)
 
     class Meta:
         model = models.PackingModel
