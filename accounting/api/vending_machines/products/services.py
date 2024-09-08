@@ -5,11 +5,12 @@ from typing import List
 from django.conf import settings
 from django.forms.models import model_to_dict
 
-from api.vending_machines.categories.services import CategoryService
 from api.exceptions import ServiceResponseException
+from api.vending_machines.categories.services import CategoryService
 from api.vending_machines.vending_machines.services import VendingMachineService
-from .data import ProductData
 from api.products.models import ProductModel
+
+from .data import ProductData
 
 
 PROTOCOL = getattr(settings, "VENDING_MACHINES_PROTOCOL")

@@ -10,7 +10,7 @@ def get_category_by_sku(category_sku: str) -> CategoryModel:
     except CategoryModel.DoesNotExist:
         raise NoObjectException(
             "Category not found",
-            {"message": f"Category with sku=\"{category_sku}\" not found"},
+            {"message": f"Category with sku={category_sku} not found"},
         )
 
     return category

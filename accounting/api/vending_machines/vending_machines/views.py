@@ -1,24 +1,18 @@
-from rest_framework.views import APIView
+from rest_framework import status
 from rest_framework.request import Request
 from rest_framework.response import Response
-from rest_framework import status
+from rest_framework.views import APIView
 
 from . import serializers
-from .. import models
 from . import services
+from .utils import get_vending_machine
 
 
 class SyncOneVendingMachineView(APIView):
     serializer_class = serializers.VendingMachineDataSerializer
 
     def get(self, request: Request, vending_machine_id: int):
-        try:
-            vending_machine = models.VendingMachineModel.objects.get(pk=vending_machine_id)
-        except models.VendingMachineModel.DoesNotExist:
-            return Response(
-                {"message": "Vending machine not found"},
-                status.HTTP_404_NOT_FOUND
-            )
+        vending_machine = get_vending_machine(vending_machine_id)
 
         serializer = self.serializer_class(
             services.VendingMachineService(

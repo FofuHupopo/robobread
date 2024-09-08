@@ -10,7 +10,7 @@ def get_vending_machine(vending_machine_id: int) -> VendingMachineModel:
     except VendingMachineModel.DoesNotExist:
         raise NoObjectException(
             "Vending machine not found",
-            {"message": f"Vending machine with id=\"{vending_machine_id}\" not found"},
+            {"message": f"Vending machine with id={vending_machine_id} not found"},
         )
 
     return vending_machine

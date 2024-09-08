@@ -1,6 +1,6 @@
 from rest_framework import serializers
 
-from . import data
+from .data import ProductData
 from api.vending_machines.vending_machines.serializers import VendingMachineDataSerializer
 from api.vending_machines.categories.serializers import VendingMachineCategorySerializer
 
@@ -28,5 +28,5 @@ class ProductDataSerializer(VendingMachineDataSerializer):
     products = VendingMachineProductSerializer(many=True)
 
     class Meta:
-        dataclass = data.ProductData
+        dataclass = ProductData
         depth = 1

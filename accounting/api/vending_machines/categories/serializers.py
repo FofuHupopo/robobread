@@ -1,6 +1,6 @@
 from rest_framework import serializers
 
-from . import data
+from .data import CategoryData
 from api.vending_machines.vending_machines.serializers import VendingMachineDataSerializer
 
 
@@ -19,5 +19,5 @@ class CategoryDataSerializer(VendingMachineDataSerializer):
     categories = VendingMachineCategorySerializer(many=True)
 
     class Meta:
-        dataclass = data.CategoryData
+        dataclass = CategoryData
         depth = 1

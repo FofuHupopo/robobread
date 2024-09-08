@@ -7,8 +7,9 @@ from django.forms.models import model_to_dict
 
 from api.exceptions import ServiceResponseException
 from api.vending_machines.vending_machines.services import VendingMachineService
-from .data import CategoryData
 from api.products.models import CategoryModel
+
+from .data import CategoryData
 
 
 PROTOCOL = getattr(settings, "VENDING_MACHINES_PROTOCOL")

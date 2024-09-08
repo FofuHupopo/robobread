@@ -10,7 +10,7 @@ def get_product_by_sku(product_sku: str) -> ProductModel:
     except ProductModel.DoesNotExist:
         raise NoObjectException(
             "Product not found",
-            {"message": f"Product with sku=\"{product_sku}\" not found"},
+            {"message": f"Product with sku={product_sku} not found"},
         )
 
     return product
