@@ -1,5 +1,3 @@
-from drf_spectacular.utils import extend_schema_view, extend_schema, OpenApiParameter
-from drf_spectacular.types import OpenApiTypes
 from rest_framework.views import APIView
 from rest_framework.request import Request
 from rest_framework.response import Response
@@ -12,51 +10,7 @@ from . import docs
 from api.vending_machines.vending_machines.utils import get_vending_machine
 
 
-@extend_schema_view(
-    get=extend_schema(
-        summary="Получение списка категорий в автомате",
-        description="Получение списка категорий в автомате",
-        responses={
-            status.HTTP_200_OK: CategoryDataSerializer
-        },
-        tags=["Категории автомата"],
-    ),
-    post=extend_schema(
-        summary="Добавление категории в список автомата",
-        description="Добавление категории в список автомата",
-        request=docs.CategoryRequestSerializer,
-        responses={
-            status.HTTP_201_CREATED: CategoryDataSerializer
-        },
-        tags=["Категории автомата"],
-    ),
-    delete=extend_schema(
-        summary="Удаление категории из списка автомата",
-        description="Удаление категории из списка автомата",
-        parameters=[
-            OpenApiParameter(
-                name='category_sku',
-                location=OpenApiParameter.QUERY,
-                description='ID категории',
-                type=OpenApiTypes.INT,
-                required=True
-            )
-        ],
-        responses={
-            status.HTTP_200_OK: CategoryDataSerializer
-        },
-        tags=["Категории автомата"],
-    ),
-    put=extend_schema(
-        summary="Обновление категории в списке автомата",
-        description="Обновление категории в списке автомата",
-        request=docs.CategoryRequestSerializer,
-        responses={
-            status.HTTP_200_OK: CategoryDataSerializer
-        },
-        tags=["Категории автомата"],
-    )
-)
+@docs.vending_machine_category_list
 class VendingMachineCategoryListView(APIView):
     serializer_class = CategoryDataSerializer
     service_class = CategoryService

@@ -1,4 +1,3 @@
-from drf_spectacular.utils import extend_schema, extend_schema_view
 from rest_framework import generics, status
 from rest_framework.request import Request
 from rest_framework.response import Response
@@ -9,20 +8,8 @@ from . import serializers
 from . import docs
 
 
-@extend_schema_view(
-    get=extend_schema(
-        summary="Получение списка всех заказов",
-        description="Получение списка всех заказов",
-        tags=["Заказы"],
-    ),
-    post=extend_schema(
-        summary="Создание заказа",
-        description="Создание заказа. Первый этап оплаты (в поле product необходимо передать id товара)",
-        request=docs.ProductBodyParamater,
-        tags=["Заказы"],
-    )
-)
-class OrderListAPIView(generics.ListCreateAPIView):
+@docs.order_list
+class OrderListView(generics.ListCreateAPIView):
     queryset = models.OrderModel.objects.all()
     serializer_class = serializers.OrderSerializer
     
@@ -49,13 +36,7 @@ class OrderListAPIView(generics.ListCreateAPIView):
         )
 
 
-@extend_schema_view(
-    get=extend_schema(
-        summary="Информация о заказе по id",
-        description="Получение детальной информации по id заказа",
-        tags=["Заказы"],
-    )
-)
-class OrderDetailAPIView(generics.RetrieveAPIView):
+@docs.order_detail
+class OrderDetailView(generics.RetrieveAPIView):
     queryset = models.OrderModel.objects.all()
     serializer_class = serializers.OrderSerializer

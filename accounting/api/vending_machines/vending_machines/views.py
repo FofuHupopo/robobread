@@ -1,4 +1,3 @@
-from drf_spectacular.utils import extend_schema_view, extend_schema
 from rest_framework import status
 from rest_framework.request import Request
 from rest_framework.response import Response
@@ -7,16 +6,10 @@ from rest_framework.views import APIView
 from . import serializers
 from . import services
 from .utils import get_vending_machine
+from . import docs
 
 
-@extend_schema_view(
-    get=extend_schema(
-        summary="Синхронизация данных для одного аппарата",
-        description="Синхронизация данных для одного аппарата",
-        responses={200: serializers.VendingMachineDataSerializer},
-        tags=["Синхронизация"],
-    )
-)
+@docs.sync_one_vending_machine
 class SyncOneVendingMachineView(APIView):
     serializer_class = serializers.VendingMachineDataSerializer
 
@@ -35,14 +28,7 @@ class SyncOneVendingMachineView(APIView):
         )
 
 
-@extend_schema_view(
-    get=extend_schema(
-        summary="Синхронизация данных для всех аппаратов",
-        description="Синхронизация данных для всех аппаратов",
-        responses={200: serializers.VendingMachineDataSerializer(many=True)},
-        tags=["Синхронизация"],
-    )
-)
+@docs.sync_vending_machines
 class SyncVendingMachinesView(APIView):
     serializer_class = serializers.VendingMachineDataSerializer
 
