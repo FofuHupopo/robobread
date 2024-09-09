@@ -40,6 +40,18 @@ class CellSerializer(serializers.ModelSerializer):
         fields = '__all__'
 
 
+class ProductWithOutCellsSerializer(serializers.ModelSerializer):
+    category = CategorySerializer()
+
+    class Meta:
+        model = models.ProductModel
+        depth = 1
+        fields = (
+            'id', 'name', 'description', 'sku', 'composition',
+            'expiration_date', 'price', 'image', 'category',
+        )
+
+
 class ProductSerializer(serializers.ModelSerializer):
     cells = CellSerializer(many=True, read_only=True)
     category_id = serializers.IntegerField(write_only=True)

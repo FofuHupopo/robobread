@@ -10,11 +10,45 @@ from . import models
 from . import serializers
 
 
+@extend_schema_view(
+    get=extend_schema(
+        summary="Список категорий",
+        description="Получение списка категорий",
+        tags=["Категории"],
+    ),
+    post=extend_schema(
+        summary="Создание категории",
+        description="Создание категории",
+        tags=["Категории"],
+    )
+)
 class CategoryListAPIView(generics.ListCreateAPIView):
     queryset = models.CategoryModel.objects.all()
     serializer_class = serializers.CategorySerializer
 
 
+@extend_schema_view(
+    get=extend_schema(
+        summary="Информация о категории",
+        description="Получение детальной информации по id категории",
+        tags=["Категории"],
+    ),
+    put=extend_schema(
+        summary="Изменение категории",
+        description="Изменение информации категории по id",
+        tags=["Категории"],
+    ),
+    patch=extend_schema(
+        summary="Изменение категории",
+        description="Изменение информации категории по id",
+        tags=["Категории"],
+    ),
+    delete=extend_schema(
+        summary="Удаление категории",
+        description="Удаление категории по id",
+        tags=["Категории"],
+    ),
+)
 class CategoryDetailAPIView(generics.RetrieveUpdateDestroyAPIView):
     queryset = models.CategoryModel.objects.all()
     serializer_class = serializers.CategorySerializer
@@ -22,10 +56,17 @@ class CategoryDetailAPIView(generics.RetrieveUpdateDestroyAPIView):
 
 @extend_schema_view(
     get=extend_schema(
+        summary="Список товаров по категориям",
         description="Если указать category_id в query параметрах, то вернет только товары этой категории",
         parameters=[
-            OpenApiParameter("category_id", OpenApiTypes.STR, required=False),
-        ]
+            OpenApiParameter(
+                name="category_id",
+                location=OpenApiParameter.QUERY,
+                type=OpenApiTypes.STR,
+                required=False
+            ),
+        ],
+        tags=["Товары"],
     )
 )
 class ProductListAPIView(generics.ListAPIView):
@@ -43,21 +84,89 @@ class ProductListAPIView(generics.ListAPIView):
         return list(filter(lambda product: product.is_can_sell, queryset))
 
 
+@extend_schema_view(
+    get=extend_schema(
+        summary="Список всех товаров",
+        description="Получение списка всех товаров",
+        tags=["Товары"],
+    ),
+    post=extend_schema(
+        summary="Создание товара",
+        description="Создание товара",
+        tags=["Товары"],
+    )
+)
 class AllProductListAPIView(generics.ListCreateAPIView):
     queryset = models.ProductModel.objects.all()
     serializer_class = serializers.ProductSerializer
 
 
+@extend_schema_view(
+    get=extend_schema(
+        summary="Информация о товаре",
+        description="Получение детальной информации по id товара",
+        tags=["Товары"],
+    ),
+    put=extend_schema(
+        summary="Изменение товара",
+        description="Изменение информации о товаре по id",
+        tags=["Товары"],
+    ),
+    patch=extend_schema(
+        summary="Изменение товара",
+        description="Изменение информации о товаре по id",
+        tags=["Товары"],
+    ),
+    delete=extend_schema(
+        summary="Удаление товара",
+        description="Удаление товара по id",
+        tags=["Товары"],
+    ),
+)
 class ProductDetailAPIView(generics.RetrieveUpdateDestroyAPIView):
     queryset = models.ProductModel.objects.all()
     serializer_class = serializers.ProductSerializer
 
 
+@extend_schema_view(
+    get=extend_schema(
+        summary="Список ячеек",
+        description="Получение списка ячеек",
+        tags=["Ячейки"],
+    ),
+    post=extend_schema(
+        summary="Создание ячейки",
+        description="Создание ячейки",
+        tags=["Ячейки"],
+    )
+)
 class CellListAPIView(generics.ListCreateAPIView):
     queryset = models.CellModel.objects.all()
     serializer_class = serializers.CellSerializer
 
 
+@extend_schema_view(
+    get=extend_schema(
+        summary="Информация о ячейке",
+        description="Получение детальной информации по id ячейки",
+        tags=["Ячейки"],
+    ),
+    put=extend_schema(
+        summary="Изменение ячейки",
+        description="Изменение информации ячейки по id",
+        tags=["Ячейки"],
+    ),
+    patch=extend_schema(
+        summary="Изменение ячейки",
+        description="Изменение информации ячейки по id",
+        tags=["Ячейки"],
+    ),
+    delete=extend_schema(
+        summary="Удаление ячейки",
+        description="Удаление ячейки по id",
+        tags=["Ячейки"],
+    ),
+)
 class CellDetailAPIView(generics.RetrieveUpdateDestroyAPIView):
     queryset = models.CellModel.objects.all()
     serializer_class = serializers.CellSerializer
@@ -72,6 +181,18 @@ class CellDetailAPIView(generics.RetrieveUpdateDestroyAPIView):
         return super().delete(request, *args, **kwargs)
 
 
+@extend_schema_view(
+    get=extend_schema(
+        summary="Список товаров в ячейке",
+        description="Получение списка товаров в ячейке",
+        tags=["Товар в ячейке"],
+    ),
+    post=extend_schema(
+        summary="Добавление товара в ячейку",
+        description="Добавление товара в ячейку",
+        tags=["Товар в ячейке"],
+    )
+)
 class ProductInCellView(APIView):
     serializer_class = serializers.ProductInCellSerializer
 
@@ -107,6 +228,23 @@ class ProductInCellView(APIView):
         )
 
 
+@extend_schema_view(
+    get=extend_schema(
+        summary="Информация о товаре в ячейке",
+        description="Получение детальной информации о товаре в ячейке",
+        tags=["Товар в ячейке"],
+    ),
+    put=extend_schema(
+        summary="Изменение товаре в ячейке",
+        description="Изменение информации о товаре в ячейке",
+        tags=["Товар в ячейке"],
+    ),
+    delete=extend_schema(
+        summary="Удаление товара из ячейки",
+        description="Удаление товара из ячейки",
+        tags=["Товар в ячейке"],
+    )
+)
 class ProductInCellDetailView(APIView):
     serializer_class = serializers.ProductInCellSerializer
 
@@ -154,6 +292,17 @@ class ProductInCellDetailView(APIView):
         }, status.HTTP_200_OK)
 
 
+@extend_schema_view(
+    post=extend_schema(
+        summary="Затаривание",
+        description="Создание нового затаривания",
+        request=serializers.PackingSerializer,
+        responses={
+            status.HTTP_201_CREATED: serializers.PackingResultSerializer
+        },
+        tags=["Затаривание"]
+    )
+)
 class PackingView(APIView):
     serializer_class = serializers.PackingSerializer
 

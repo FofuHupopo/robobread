@@ -5,7 +5,7 @@ from rest_framework.response import Response
 from rest_framework.request import Request
 from rest_framework.permissions import AllowAny
 from rest_framework.renderers import StaticHTMLRenderer
-from drf_spectacular.utils import extend_schema, OpenApiParameter, OpenApiTypes
+from drf_spectacular.utils import extend_schema, extend_schema_view, OpenApiParameter, OpenApiTypes
 
 from api.utils import InteractionCommand
 from api.orders import models as orders_models
@@ -21,15 +21,26 @@ merchant_api = MerchantAPI(
 )
 
 
+@extend_schema_view(
+    get=extend_schema(
+        summary="Получение информации по оплате",
+        description="Получение информации по оплате, по payment_id из query параметров",
+        parameters=[
+            OpenApiParameter("payment_id", OpenApiTypes.STR)
+        ],
+        tags=["Оплата"],
+    ),
+    post=extend_schema(
+        summary="Создание оплаты",
+        description="Второй этап оплаты. В поле order_id необходимо передать id заказа",
+        request=docs.OrderIdBodyParamater,
+        tags=["Оплата"],
+    )
+)
 class PaymentView(APIView):
     serializer_class = serializers.PaymentSerializer
     permission_classes = [AllowAny]
-    
-    @extend_schema(
-        parameters=[
-            OpenApiParameter("payment_id", OpenApiTypes.STR)
-        ]
-    )
+
     def get(self, request: Request):
         payment_id = request.query_params.get("payment_id")
         
@@ -80,9 +91,6 @@ class PaymentView(APIView):
             status.HTTP_200_OK
         )
 
-    @extend_schema(
-        request=docs.OrderIdBodyParamater
-    )
     def post(self, request: Request):
         order_id = request.data.get("order_id")
 
@@ -138,11 +146,10 @@ class PaymentView(APIView):
         )
 
 
-class QrPaymentView(APIView):
-    permission_classes = [AllowAny]
-    renderer_classes = [StaticHTMLRenderer]
-
-    @extend_schema(
+@extend_schema_view(
+    get=extend_schema(
+        summary="Получение QR кода оплаты",
+        description="Получение QR кода в формате <svg>, который необходимо отобразить на странице оплаты. Третий этап оплаты",
         parameters=[
             OpenApiParameter(
                 name="payment_id",
@@ -150,9 +157,15 @@ class QrPaymentView(APIView):
             )
         ],
         responses={
-            200: OpenApiTypes.STR
-        }
+            status.HTTP_200_OK: OpenApiTypes.STR
+        },
+        tags=["Оплата"],
     )
+)
+class QrPaymentView(APIView):
+    permission_classes = [AllowAny]
+    renderer_classes = [StaticHTMLRenderer]
+
     def get(self, request: Request):
         payment_id = request.query_params.get("payment_id")
         
@@ -178,18 +191,24 @@ class QrPaymentView(APIView):
         )
 
 
+@extend_schema_view(
+    get=extend_schema(
+        summary="Отмена оплаты",
+        description="Отмена оплаты на стороне Тинькофф. Интрефейса на автомате нет",
+        parameters=[
+            OpenApiParameter(
+                name="payment_id",
+                location=OpenApiParameter.QUERY,
+                type=OpenApiTypes.STR,
+            )
+        ],
+        tags=["Оплата"],
+    )
+)
 class CancelPaymentView(APIView):
     serializer_class = serializers.PaymentSerializer
     permission_classes = [AllowAny]
 
-    @extend_schema(
-        parameters=[
-            OpenApiParameter(
-                name="payment_id",
-                type=OpenApiTypes.STR
-            )
-        ]
-    )
     def get(self, request: Request):
         payment_id = request.query_params.get("payment_id")
         
@@ -218,30 +237,38 @@ class CancelPaymentView(APIView):
         )
 
 
-class SbpPayTestView(APIView):
-    serializer_class = serializers.PaymentSerializer
-    permission_classes = [AllowAny]
-
-    @extend_schema(
+@extend_schema_view(
+    get=extend_schema(
+        summary="Тестовая оплаты по sbp",
+        description="Проведение тестовой оплаты через sbp, необходимо для тестирования",
         parameters=[
             OpenApiParameter(
                 name="payment_id",
-                type=OpenApiTypes.STR
+                location=OpenApiParameter.QUERY,
+                type=OpenApiTypes.STR,
             ),
             OpenApiParameter(
                 name="is_expired",
+                location=OpenApiParameter.QUERY,
                 type=OpenApiTypes.BOOL,
                 default=False,
                 required=False
             ),
             OpenApiParameter(
                 name="is_rejected",
+                location=OpenApiParameter.QUERY,
                 type=OpenApiTypes.BOOL,
                 default=False,
                 required=False
             )
-        ]
+        ],
+        tags=["Оплата"],
     )
+)
+class SbpPayTestView(APIView):
+    serializer_class = serializers.PaymentSerializer
+    permission_classes = [AllowAny]
+
     def get(self, request: Request):
         payment_id = request.query_params.get("payment_id")
         is_expired = bool(request.query_params.get("is_expired", False))

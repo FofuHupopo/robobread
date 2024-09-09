@@ -187,3 +187,12 @@ CONSTANCE_BACKEND = 'constance.backends.database.DatabaseBackend'
 CONSTANCE_CONFIG = {
     'LOCK_CODE': ("1234", 'Код замка'),
 }
+
+SPECTACULAR_SETTINGS = {
+    'TITLE': 'Server API',
+    'DESCRIPTION': 'API для торгового автомата',
+    'VERSION': '1.0.0',
+    'SERVE_INCLUDE_SCHEMA': False,
+    'TAGS': [
+    ],
+}
