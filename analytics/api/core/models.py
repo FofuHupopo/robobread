@@ -25,7 +25,7 @@ class VendingMachineModel(models.Model):
     )
     status = models.CharField(
         max_length=8,
-        choices=STATUS_CHOICES, default='active'
+        choices=STATUS_CHOICES, default='inactive'
     )
 
     class Meta:

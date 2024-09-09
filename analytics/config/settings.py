@@ -143,8 +143,10 @@ CORS_ALLOW_HEADERS = [
 ]
 
 
-DATA_UPLOAD_MAX_MEMORY_SIZE = 1024 * 1024 * 20  # 20 MB
-FILE_UPLOAD_MAX_MEMORY_SIZE = 1024 * 1024 * 20  # 20 MB
+TWENTY_MEGABYTES = 20 * 1024 * 1024
+
+DATA_UPLOAD_MAX_MEMORY_SIZE = TWENTY_MEGABYTES
+FILE_UPLOAD_MAX_MEMORY_SIZE = TWENTY_MEGABYTES
 
 
 REST_FRAMEWORK = {
@@ -156,4 +158,17 @@ REST_FRAMEWORK = {
         'rest_framework.renderers.BrowsableAPIRenderer',
     ],
     'DEFAULT_SCHEMA_CLASS': 'drf_spectacular.openapi.AutoSchema'
+}
+
+
+SPECTACULAR_SETTINGS = {
+    'TITLE': 'Analytics API',
+    'DESCRIPTION': 'API для аналитики продаж и товарного остатка',
+    'VERSION': '1.0.0',
+    'SERVE_INCLUDE_SCHEMA': False,
+    'TAGS': [
+        {'name': 'Торговые автоматы', 'description': 'CRUD по торговым автоматам (update происходит на стороне автомата)'},
+        {'name': 'Статистика продаж', 'description': 'Статистика продаж по всем автоматам вместе'},
+        {'name': 'Товарный остаток', 'description': 'Получение информации по товарному остатку в каждом автомате'},
+    ],
 }
