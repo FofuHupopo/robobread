@@ -163,7 +163,7 @@ packing = extend_schema_view(
     post=extend_schema(
         summary="Затаривание",
         description="Создание нового затаривания",
-        request=serializers.PackingSerializer,
+        request=serializers.PackingSerializer(many=True),
         responses={
             status.HTTP_201_CREATED: serializers.PackingResultSerializer
         },

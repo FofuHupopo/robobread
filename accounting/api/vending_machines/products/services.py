@@ -46,7 +46,6 @@ class ProductService(VendingMachineService):
 
     def get_products(self) -> List[ProductModel]:
         data = self.get_request(URLS["products"])
-        print(data)
         return data
 
     def create_product(self, product: ProductModel) -> ProductModel:

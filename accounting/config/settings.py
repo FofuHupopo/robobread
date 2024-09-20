@@ -148,7 +148,7 @@ REST_FRAMEWORK = {
 
 SPECTACULAR_SETTINGS = {
     'TITLE': 'Accounting API',
-    'DESCRIPTION': 'API для сервиса учета товаров и затаривания',
+    'DESCRIPTION': 'API для сервиса учета товаров и затаривания по всем торговым автоматам.',
     'VERSION': '1.0.0',
     'SERVE_INCLUDE_SCHEMA': False,
     'TAGS': [

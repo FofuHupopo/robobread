@@ -1,5 +1,4 @@
 from rest_framework import generics
-from drf_spectacular.utils import extend_schema_view, extend_schema
 
 from . import models
 from . import serializers
@@ -13,6 +12,6 @@ class PackingView(generics.ListCreateAPIView):
 
 
 @docs.packing_detail
-class PackingDetailView(generics.RetrieveUpdateDestroyAPIView):
+class PackingDetailView(generics.RetrieveDestroyAPIView):
     queryset = models.PackingModel.objects.all()
     serializer_class = serializers.PackingSerializer

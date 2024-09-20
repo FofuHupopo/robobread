@@ -55,3 +55,26 @@ class PackingSerializer(serializers.ModelSerializer):
             )
 
         return packing
+
+    def update(self, instance, validated_data):
+        for added_item_data in validated_data.pop('added_items'):
+            added_item_instance = models.PackingAddedItemModel.objects.get(
+                id=added_item_data.pop('id')
+            )
+
+            for key, value in added_item_data.items():
+                setattr(added_item_instance, key, value)
+
+            added_item_instance.save()
+
+        for removed_item_data in validated_data.pop('removed_items'):
+            removed_item_instance = models.PackingAddedItemModel.objects.get(
+                id=removed_item_data.pop('id')
+            )
+
+            for key, value in removed_item_instance.items():
+                setattr(removed_item_instance, key, value)
+
+            removed_item_instance.save()
+
+        return super().update(instance, validated_data)

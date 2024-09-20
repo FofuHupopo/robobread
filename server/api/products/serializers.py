@@ -21,6 +21,8 @@ class CategorySerializer(serializers.ModelSerializer):
 
 
 class ProductWithOutCellsSerializer(serializers.ModelSerializer):
+    category = CategorySerializer()
+
     class Meta:
         model = models.ProductModel
         fields = (
@@ -38,6 +40,7 @@ class CellSerializer(serializers.ModelSerializer):
     class Meta:
         model = models.CellModel
         fields = '__all__'
+        depth = 2
 
 
 class ProductWithOutCellsSerializer(serializers.ModelSerializer):
@@ -92,7 +95,7 @@ class PackingSerializer(serializers.Serializer):
 
         for _ in range(removed):
             cell.remove_product()
-        
+
         if added >= 0:
             for _ in range(added):
                 cell.add_product()
