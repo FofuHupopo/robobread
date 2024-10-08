@@ -11,6 +11,7 @@ urlpatterns = [
     path("all-product/<int:pk>", views.ProductDetailView.as_view(), name="products__all_product_deyail"),
 
     path("product", views.ProductListView.as_view(), name="products__product_list"),
+    path("product/<int:pk>", views.ProductDetailView.as_view(), name="products__all_product_deyail"),
 
     path("cell", views.CellListView.as_view(), name="products__cell_list"),
     path("cell/<int:pk>", views.CellDetailView.as_view(), name="products__cell_deyail"),
