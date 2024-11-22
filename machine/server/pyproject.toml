@@ -1,0 +1,30 @@
+[tool.poetry]
+name = "server"
+version = "0.1.0"
+description = ""
+authors = ["iizhukov <iizhukov@icloud.com>"]
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = "^3.12"
+django = "^5.0.6"
+djangorestframework = "^3.15.1"
+django-cors-headers = "^4.3.1"
+python-dotenv = "^1.0.1"
+drf-spectacular = "^0.27.2"
+pillow = "^10.3.0"
+requests = "^2.32.1"
+django-constance = "^3.1.0"
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
+
+[tool.poetry.scripts]
+server = "scripts.runserver:main"
+createsuperuser = "scripts.createsuperuser:main"
+migrate = "scripts.migrate:main"
+build = "scripts.build:main"
+faker = "scripts.faker:main"
+fill_db = "scripts.fill_db:main"
+rm_db = "scripts.rm_db:main"

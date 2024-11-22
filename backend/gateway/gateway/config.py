@@ -1,0 +1,12 @@
+from .utils import getenv
+
+
+class Settings:
+    ACCOUNTING_SERVICE_URL: str = getenv("API_GATEWAY_ACCOUNTING_SERVICE_URL")
+    ANALYTICS_SERVICE_URL: str = getenv("API_GATEWAY_ANALYTICS_SERVICE_URL")
+    AUTH_SERVICE_URL: str = getenv("API_GATEWAY_AUTH_SERVICE_URL")
+    MACHINES_SERVICE_URL: str = getenv("API_GATEWAY_MACHINES_SERVICE_URL")
+    PACKING_SERVICE_URL: str = getenv("API_GATEWAY_PACKING_SERVICE_URL")
+
+
+settings = Settings()

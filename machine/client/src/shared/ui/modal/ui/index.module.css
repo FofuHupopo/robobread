@@ -1,0 +1,19 @@
+.MyModal {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  left: 0;
+  display: none;
+  transition: color 1s;
+  background-color: rgba(0, 0, 0, 0.3);
+  z-index: 101;
+}
+
+.MyModal.active {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/*# sourceMappingURL=index.module.css.map */

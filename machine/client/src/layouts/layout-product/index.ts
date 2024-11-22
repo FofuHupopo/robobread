@@ -1,0 +1,1 @@
+export {LayoutProduct} from './ui/LayoutProduct.tsx'

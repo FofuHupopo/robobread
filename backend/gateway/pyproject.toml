@@ -1,0 +1,25 @@
+[tool.poetry]
+name = "gateway"
+version = "0.1.0"
+description = ""
+authors = ["iizhukov <iizhukov@icloud.com>"]
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = "^3.12"
+fastapi = "^0.115.5"
+uvicorn = "^0.32.0"
+python-dotenv = "^1.0.1"
+jwt = "^1.3.1"
+requests = "^2.32.3"
+aiohttp = "^3.11.7"
+async-timeout = "^5.0.1"
+ujson = "^5.10.0"
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
+
+[tool.poetry.scripts]
+server = "main:main"
