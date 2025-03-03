@@ -1,0 +1,1544 @@
+[
+    {
+        "category": {
+            "id": 1,
+            "name": "Круассаны",
+            "sku": "croissant"
+        },
+        "sales": [
+            {
+                "id": 1,
+                "name": "Классический круассан",
+                "sku": "classic_croissant",
+                "price": 8900,
+                "timestamp": "2025-03-03T12:00:00",
+                "residue": 7,
+                "machine_id": 1
+            },
+            {
+                "id": 2,
+                "name": "Круассан шоколадный",
+                "sku": "chocolate_croissant",
+                "price": 12900,
+                "timestamp": "2025-03-03T12:10:00",
+                "residue": 5,
+                "machine_id": 2
+            },
+            {
+                "id": 3,
+                "name": "Круассан ванильный",
+                "sku": "vanilla_croissant",
+                "price": 9900,
+                "timestamp": "2025-03-03T12:20:00",
+                "residue": 8,
+                "machine_id": 3
+            },
+            {
+                "id": 4,
+                "name": "Миндальный круассан",
+                "sku": "almond_croissant",
+                "price": 10900,
+                "timestamp": "2025-03-03T12:30:00",
+                "residue": 6,
+                "machine_id": 4
+            },
+            {
+                "id": 5,
+                "name": "Шоколадно-ореховый круассан",
+                "sku": "nutty_chocolate_croissant",
+                "price": 14900,
+                "timestamp": "2025-03-03T12:40:00",
+                "residue": 3,
+                "machine_id": 5
+            },
+            {
+                "id": 6,
+                "name": "Фисташковый круассан",
+                "sku": "pistachio_croissant",
+                "price": 13900,
+                "timestamp": "2025-03-03T12:50:00",
+                "residue": 9,
+                "machine_id": 6
+            },
+            {
+                "id": 7,
+                "name": "Классический круассан",
+                "sku": "classic_croissant",
+                "price": 8900,
+                "timestamp": "2025-03-03T12:51:00",
+                "residue": 6,
+                "machine_id": 7
+            },
+            {
+                "id": 8,
+                "name": "Круассан шоколадный",
+                "sku": "chocolate_croissant",
+                "price": 12900,
+                "timestamp": "2025-03-03T12:52:00",
+                "residue": 4,
+                "machine_id": 8
+            },
+            {
+                "id": 9,
+                "name": "Круассан ванильный",
+                "sku": "vanilla_croissant",
+                "price": 9900,
+                "timestamp": "2025-03-03T12:53:00",
+                "residue": 7,
+                "machine_id": 9
+            },
+            {
+                "id": 10,
+                "name": "Миндальный круассан",
+                "sku": "almond_croissant",
+                "price": 10900,
+                "timestamp": "2025-03-03T12:54:00",
+                "residue": 5,
+                "machine_id": 1
+            },
+            {
+                "id": 11,
+                "name": "Шоколадно-ореховый круассан",
+                "sku": "nutty_chocolate_croissant",
+                "price": 14900,
+                "timestamp": "2025-03-03T12:55:00",
+                "residue": 2,
+                "machine_id": 2
+            },
+            {
+                "id": 12,
+                "name": "Фисташковый круассан",
+                "sku": "pistachio_croissant",
+                "price": 13900,
+                "timestamp": "2025-03-03T12:56:00",
+                "residue": 8,
+                "machine_id": 3
+            },
+            {
+                "id": 13,
+                "name": "Классический круассан",
+                "sku": "classic_croissant",
+                "price": 8900,
+                "timestamp": "2025-03-03T12:57:00",
+                "residue": 6,
+                "machine_id": 6
+            },
+            {
+                "id": 14,
+                "name": "Круассан шоколадный",
+                "sku": "chocolate_croissant",
+                "price": 12900,
+                "timestamp": "2025-03-03T12:58:00",
+                "residue": 5,
+                "machine_id": 5
+            },
+            {
+                "id": 15,
+                "name": "Круассан ванильный",
+                "sku": "vanilla_croissant",
+                "price": 9900,
+                "timestamp": "2025-03-03T12:59:00",
+                "residue": 8,
+                "machine_id": 4
+            },
+            {
+                "id": 16,
+                "name": "Миндальный круассан",
+                "sku": "almond_croissant",
+                "price": 10900,
+                "timestamp": "2025-03-03T13:00:00",
+                "residue": 7,
+                "machine_id": 7
+            },
+            {
+                "id": 17,
+                "name": "Шоколадно-ореховый круассан",
+                "sku": "nutty_chocolate_croissant",
+                "price": 14900,
+                "timestamp": "2025-03-03T13:01:00",
+                "residue": 4,
+                "machine_id": 8
+            },
+            {
+                "id": 18,
+                "name": "Фисташковый круассан",
+                "sku": "pistachio_croissant",
+                "price": 13900,
+                "timestamp": "2025-03-03T13:02:00",
+                "residue": 6,
+                "machine_id": 9
+            },
+            {
+                "id": 19,
+                "name": "Классический круассан",
+                "sku": "classic_croissant",
+                "price": 8900,
+                "timestamp": "2025-03-03T13:03:00",
+                "residue": 5,
+                "machine_id": 1
+            },
+            {
+                "id": 20,
+                "name": "Круассан шоколадный",
+                "sku": "chocolate_croissant",
+                "price": 12900,
+                "timestamp": "2025-03-03T13:04:00",
+                "residue": 3,
+                "machine_id": 2
+            },
+            {
+                "id": 21,
+                "name": "Круассан ванильный",
+                "sku": "vanilla_croissant",
+                "price": 9900,
+                "timestamp": "2025-03-03T13:05:00",
+                "residue": 7,
+                "machine_id": 3
+            },
+            {
+                "id": 22,
+                "name": "Миндальный круассан",
+                "sku": "almond_croissant",
+                "price": 10900,
+                "timestamp": "2025-03-03T13:06:00",
+                "residue": 6,
+                "machine_id": 6
+            },
+            {
+                "id": 23,
+                "name": "Шоколадно-ореховый круассан",
+                "sku": "nutty_chocolate_croissant",
+                "price": 14900,
+                "timestamp": "2025-03-03T13:07:00",
+                "residue": 2,
+                "machine_id": 5
+            },
+            {
+                "id": 24,
+                "name": "Фисташковый круассан",
+                "sku": "pistachio_croissant",
+                "price": 13900,
+                "timestamp": "2025-03-03T13:08:00",
+                "residue": 8,
+                "machine_id": 4
+            },
+            {
+                "id": 25,
+                "name": "Классический круассан",
+                "sku": "classic_croissant",
+                "price": 8900,
+                "timestamp": "2025-03-03T13:09:00",
+                "residue": 7,
+                "machine_id": 7
+            },
+            {
+                "id": 26,
+                "name": "Круассан ванильный",
+                "sku": "vanilla_croissant",
+                "price": 9900,
+                "timestamp": "2025-03-03T13:10:00",
+                "residue": 3,
+                "machine_id": 1
+            },
+            {
+                "id": 27,
+                "name": "Шоколадно-ореховый круассан",
+                "sku": "nutty_chocolate_croissant",
+                "price": 14900,
+                "timestamp": "2025-03-03T13:11:00",
+                "residue": 8,
+                "machine_id": 2
+            },
+            {
+                "id": 28,
+                "name": "Миндальный круассан",
+                "sku": "almond_croissant",
+                "price": 10900,
+                "timestamp": "2025-03-03T13:12:00",
+                "residue": 5,
+                "machine_id": 3
+            },
+            {
+                "id": 29,
+                "name": "Круассан шоколадный",
+                "sku": "chocolate_croissant",
+                "price": 12900,
+                "timestamp": "2025-03-03T13:13:00",
+                "residue": 4,
+                "machine_id": 9
+            },
+            {
+                "id": 30,
+                "name": "Классический круассан",
+                "sku": "classic_croissant",
+                "price": 8900,
+                "timestamp": "2025-03-03T13:14:00",
+                "residue": 6,
+                "machine_id": 5
+            },
+            {
+                "id": 31,
+                "name": "Фисташковый круассан",
+                "sku": "pistachio_croissant",
+                "price": 13900,
+                "timestamp": "2025-03-03T13:15:00",
+                "residue": 7,
+                "machine_id": 6
+            },
+            {
+                "id": 32,
+                "name": "Круассан ванильный",
+                "sku": "vanilla_croissant",
+                "price": 9900,
+                "timestamp": "2025-03-03T13:16:00",
+                "residue": 3,
+                "machine_id": 8
+            },
+            {
+                "id": 33,
+                "name": "Миндальный круассан",
+                "sku": "almond_croissant",
+                "price": 10900,
+                "timestamp": "2025-03-03T13:17:00",
+                "residue": 6,
+                "machine_id": 4
+            },
+            {
+                "id": 34,
+                "name": "Шоколадно-ореховый круассан",
+                "sku": "nutty_chocolate_croissant",
+                "price": 14900,
+                "timestamp": "2025-03-03T13:18:00",
+                "residue": 8,
+                "machine_id": 2
+            },
+            {
+                "id": 35,
+                "name": "Круассан шоколадный",
+                "sku": "chocolate_croissant",
+                "price": 12900,
+                "timestamp": "2025-03-03T13:19:00",
+                "residue": 4,
+                "machine_id": 9
+            },
+            {
+                "id": 36,
+                "name": "Классический круассан",
+                "sku": "classic_croissant",
+                "price": 8900,
+                "timestamp": "2025-03-03T13:20:00",
+                "residue": 6,
+                "machine_id": 5
+            },
+            {
+                "id": 37,
+                "name": "Фисташковый круассан",
+                "sku": "pistachio_croissant",
+                "price": 13900,
+                "timestamp": "2025-03-03T13:21:00",
+                "residue": 7,
+                "machine_id": 6
+            },
+            {
+                "id": 38,
+                "name": "Круассан ванильный",
+                "sku": "vanilla_croissant",
+                "price": 9900,
+                "timestamp": "2025-03-03T13:22:00",
+                "residue": 3,
+                "machine_id": 8
+            },
+            {
+                "id": 39,
+                "name": "Миндальный круассан",
+                "sku": "almond_croissant",
+                "price": 10900,
+                "timestamp": "2025-03-03T13:23:00",
+                "residue": 6,
+                "machine_id": 4
+            }
+        ]
+    },
+    {
+        "category": {
+            "id": 2,
+            "name": "Пироги",
+            "sku": "pie"
+        },
+        "sales": [
+            {
+                "id": 40,
+                "name": "Курник",
+                "sku": "chicken_pie",
+                "price": 25900,
+                "timestamp": "2025-03-03T13:00:00",
+                "residue": 4,
+                "machine_id": 7
+            },
+            {
+                "id": 41,
+                "name": "Пирог с мясом",
+                "sku": "meat_pie",
+                "price": 30900,
+                "timestamp": "2025-03-03T13:10:00",
+                "residue": 3,
+                "machine_id": 8
+            },
+            {
+                "id": 42,
+                "name": "Вишнёвый штрудель",
+                "sku": "cherry_pie",
+                "price": 21900,
+                "timestamp": "2025-03-03T13:20:00",
+                "residue": 5,
+                "machine_id": 9
+            },
+            {
+                "id": 43,
+                "name": "Яблочный штрудель",
+                "sku": "apple_pie",
+                "price": 20900,
+                "timestamp": "2025-03-03T13:30:00",
+                "residue": 2,
+                "machine_id": 10
+            },
+            {
+                "id": 44,
+                "name": "Хачапури",
+                "sku": "khachapuri",
+                "price": 30900,
+                "timestamp": "2025-03-03T13:40:00",
+                "residue": 1,
+                "machine_id": 1
+            },
+            {
+                "id": 45,
+                "name": "Курник",
+                "sku": "chicken_pie",
+                "price": 25900,
+                "timestamp": "2025-03-03T13:50:00",
+                "residue": 4,
+                "machine_id": 7
+            },
+            {
+                "id": 46,
+                "name": "Пирог с мясом",
+                "sku": "meat_pie",
+                "price": 30900,
+                "timestamp": "2025-03-03T14:00:00",
+                "residue": 3,
+                "machine_id": 8
+            },
+            {
+                "id": 47,
+                "name": "Вишнёвый штрудель",
+                "sku": "cherry_pie",
+                "price": 21900,
+                "timestamp": "2025-03-03T14:10:00",
+                "residue": 5,
+                "machine_id": 9
+            },
+            {
+                "id": 48,
+                "name": "Яблочный штрудель",
+                "sku": "apple_pie",
+                "price": 20900,
+                "timestamp": "2025-03-03T14:20:00",
+                "residue": 2,
+                "machine_id": 10
+            },
+            {
+                "id": 49,
+                "name": "Хачапури",
+                "sku": "khachapuri",
+                "price": 30900,
+                "timestamp": "2025-03-03T14:30:00",
+                "residue": 1,
+                "machine_id": 1
+            },
+            {
+                "id": 50,
+                "name": "Курник",
+                "sku": "chicken_pie",
+                "price": 25900,
+                "timestamp": "2025-03-03T14:40:00",
+                "residue": 4,
+                "machine_id": 7
+            },
+            {
+                "id": 51,
+                "name": "Пирог с мясом",
+                "sku": "meat_pie",
+                "price": 30900,
+                "timestamp": "2025-03-03T14:50:00",
+                "residue": 3,
+                "machine_id": 8
+            },
+            {
+                "id": 52,
+                "name": "Вишнёвый штрудель",
+                "sku": "cherry_pie",
+                "price": 21900,
+                "timestamp": "2025-03-03T15:00:00",
+                "residue": 5,
+                "machine_id": 9
+            },
+            {
+                "id": 53,
+                "name": "Яблочный штрудель",
+                "sku": "apple_pie",
+                "price": 20900,
+                "timestamp": "2025-03-03T15:10:00",
+                "residue": 2,
+                "machine_id": 10
+            },
+            {
+                "id": 54,
+                "name": "Хачапури",
+                "sku": "khachapuri",
+                "price": 30900,
+                "timestamp": "2025-03-03T15:20:00",
+                "residue": 1,
+                "machine_id": 1
+            },
+            {
+                "id": 55,
+                "name": "Курник",
+                "sku": "chicken_pie",
+                "price": 25900,
+                "timestamp": "2025-03-03T15:30:00",
+                "residue": 4,
+                "machine_id": 7
+            },
+            {
+                "id": 56,
+                "name": "Пирог с мясом",
+                "sku": "meat_pie",
+                "price": 30900,
+                "timestamp": "2025-03-03T15:40:00",
+                "residue": 3,
+                "machine_id": 8
+            },
+            {
+                "id": 57,
+                "name": "Вишнёвый штрудель",
+                "sku": "cherry_pie",
+                "price": 21900,
+                "timestamp": "2025-03-03T15:50:00",
+                "residue": 5,
+                "machine_id": 9
+            },
+            {
+                "id": 58,
+                "name": "Яблочный штрудель",
+                "sku": "apple_pie",
+                "price": 20900,
+                "timestamp": "2025-03-03T16:00:00",
+                "residue": 2,
+                "machine_id": 10
+            },
+            {
+                "id": 59,
+                "name": "Хачапури",
+                "sku": "khachapuri",
+                "price": 30900,
+                "timestamp": "2025-03-03T16:10:00",
+                "residue": 1,
+                "machine_id": 1
+            }
+        ]
+    },
+    {
+        "category": {
+            "id": 3,
+            "name": "Пицца",
+            "sku": "pizza"
+        },
+        "sales": [
+            {
+                "id": 60,
+                "name": "Пицца пеперони с халапеньо",
+                "sku": "hot_pepperoni_pizza",
+                "price": 30900,
+                "timestamp": "2025-03-03T16:20:00",
+                "residue": 2,
+                "machine_id": 2
+            },
+            {
+                "id": 61,
+                "name": "Пицца пеперони",
+                "sku": "pepperoni_pizza",
+                "price": 30900,
+                "timestamp": "2025-03-03T16:30:00",
+                "residue": 3,
+                "machine_id": 3
+            },
+            {
+                "id": 62,
+                "name": "Гавайская пицца",
+                "sku": "hawaiian_pizza",
+                "price": 31900,
+                "timestamp": "2025-03-03T16:40:00",
+                "residue": 1,
+                "machine_id": 4
+            },
+            {
+                "id": 63,
+                "name": "Пицца 4 сыра",
+                "sku": "4_cheese_pizza",
+                "price": 30900,
+                "timestamp": "2025-03-03T16:50:00",
+                "residue": 4,
+                "machine_id": 5
+            },
+            {
+                "id": 64,
+                "name": "BBQ пицца",
+                "sku": "bbq_pizza",
+                "price": 35900,
+                "timestamp": "2025-03-03T17:00:00",
+                "residue": 2,
+                "machine_id": 6
+            },
+            {
+                "id": 65,
+                "name": "Пицца пеперони с халапеньо",
+                "sku": "hot_pepperoni_pizza",
+                "price": 30900,
+                "timestamp": "2025-03-03T17:10:00",
+                "residue": 3,
+                "machine_id": 7
+            },
+            {
+                "id": 66,
+                "name": "Пицца пеперони",
+                "sku": "pepperoni_pizza",
+                "price": 30900,
+                "timestamp": "2025-03-03T17:20:00",
+                "residue": 2,
+                "machine_id": 8
+            },
+            {
+                "id": 67,
+                "name": "Гавайская пицца",
+                "sku": "hawaiian_pizza",
+                "price": 31900,
+                "timestamp": "2025-03-03T17:30:00",
+                "residue": 1,
+                "machine_id": 9
+            },
+            {
+                "id": 68,
+                "name": "Пицца 4 сыра",
+                "sku": "4_cheese_pizza",
+                "price": 30900,
+                "timestamp": "2025-03-03T17:40:00",
+                "residue": 4,
+                "machine_id": 10
+            },
+            {
+                "id": 69,
+                "name": "BBQ пицца",
+                "sku": "bbq_pizza",
+                "price": 35900,
+                "timestamp": "2025-03-03T17:50:00",
+                "residue": 3,
+                "machine_id": 1
+            },
+            {
+                "id": 70,
+                "name": "Пицца пеперони с халапеньо",
+                "sku": "hot_pepperoni_pizza",
+                "price": 30900,
+                "timestamp": "2025-03-03T18:00:00",
+                "residue": 2,
+                "machine_id": 2
+            },
+            {
+                "id": 71,
+                "name": "Пицца пеперони",
+                "sku": "pepperoni_pizza",
+                "price": 30900,
+                "timestamp": "2025-03-03T18:10:00",
+                "residue": 1,
+                "machine_id": 3
+            },
+            {
+                "id": 72,
+                "name": "Гавайская пицца",
+                "sku": "hawaiian_pizza",
+                "price": 31900,
+                "timestamp": "2025-03-03T18:20:00",
+                "residue": 3,
+                "machine_id": 4
+            },
+            {
+                "id": 73,
+                "name": "Пицца 4 сыра",
+                "sku": "4_cheese_pizza",
+                "price": 30900,
+                "timestamp": "2025-03-03T18:30:00",
+                "residue": 2,
+                "machine_id": 5
+            },
+            {
+                "id": 74,
+                "name": "BBQ пицца",
+                "sku": "bbq_pizza",
+                "price": 35900,
+                "timestamp": "2025-03-03T18:40:00",
+                "residue": 4,
+                "machine_id": 6
+            },
+            {
+                "id": 75,
+                "name": "Пицца пеперони с халапеньо",
+                "sku": "hot_pepperoni_pizza",
+                "price": 30900,
+                "timestamp": "2025-03-03T18:50:00",
+                "residue": 1,
+                "machine_id": 7
+            },
+            {
+                "id": 76,
+                "name": "Пицца пеперони",
+                "sku": "pepperoni_pizza",
+                "price": 30900,
+                "timestamp": "2025-03-03T19:00:00",
+                "residue": 2,
+                "machine_id": 8
+            },
+            {
+                "id": 77,
+                "name": "Гавайская пицца",
+                "sku": "hawaiian_pizza",
+                "price": 31900,
+                "timestamp": "2025-03-03T19:10:00",
+                "residue": 1,
+                "machine_id": 9
+            },
+            {
+                "id": 78,
+                "name": "Пицца 4 сыра",
+                "sku": "4_cheese_pizza",
+                "price": 30900,
+                "timestamp": "2025-03-03T19:20:00",
+                "residue": 3,
+                "machine_id": 10
+            },
+            {
+                "id": 79,
+                "name": "BBQ пицца",
+                "sku": "bbq_pizza",
+                "price": 35900,
+                "timestamp": "2025-03-03T19:30:00",
+                "residue": 2,
+                "machine_id": 1
+            },
+            {
+                "id": 80,
+                "name": "Пицца пеперони с халапеньо",
+                "sku": "hot_pepperoni_pizza",
+                "price": 30900,
+                "timestamp": "2025-03-03T19:40:00",
+                "residue": 4,
+                "machine_id": 2
+            },
+            {
+                "id": 81,
+                "name": "Пицца пеперони",
+                "sku": "pepperoni_pizza",
+                "price": 30900,
+                "timestamp": "2025-03-03T19:50:00",
+                "residue": 3,
+                "machine_id": 3
+            },
+            {
+                "id": 82,
+                "name": "Гавайская пицца",
+                "sku": "hawaiian_pizza",
+                "price": 31900,
+                "timestamp": "2025-03-03T20:00:00",
+                "residue": 1,
+                "machine_id": 4
+            },
+            {
+                "id": 83,
+                "name": "Пицца 4 сыра",
+                "sku": "4_cheese_pizza",
+                "price": 30900,
+                "timestamp": "2025-03-03T20:10:00",
+                "residue": 2,
+                "machine_id": 5
+            },
+            {
+                "id": 84,
+                "name": "BBQ пицца",
+                "sku": "bbq_pizza",
+                "price": 35900,
+                "timestamp": "2025-03-03T20:20:00",
+                "residue": 3,
+                "machine_id": 6
+            },
+            {
+                "id": 85,
+                "name": "Пицца пеперони с халапеньо",
+                "sku": "hot_pepperoni_pizza",
+                "price": 30900,
+                "timestamp": "2025-03-03T20:30:00",
+                "residue": 1,
+                "machine_id": 7
+            },
+            {
+                "id": 86,
+                "name": "Пицца пеперони",
+                "sku": "pepperoni_pizza",
+                "price": 30900,
+                "timestamp": "2025-03-03T20:40:00",
+                "residue": 2,
+                "machine_id": 8
+            },
+            {
+                "id": 87,
+                "name": "Гавайская пицца",
+                "sku": "hawaiian_pizza",
+                "price": 31900,
+                "timestamp": "2025-03-03T20:50:00",
+                "residue": 3,
+                "machine_id": 9
+            },
+            {
+                "id": 88,
+                "name": "Пицца 4 сыра",
+                "sku": "4_cheese_pizza",
+                "price": 30900,
+                "timestamp": "2025-03-03T21:00:00",
+                "residue": 2,
+                "machine_id": 10
+            },
+            {
+                "id": 89,
+                "name": "BBQ пицца",
+                "sku": "bbq_pizza",
+                "price": 35900,
+                "timestamp": "2025-03-03T21:10:00",
+                "residue": 1,
+                "machine_id": 1
+            },
+            {
+                "id": 90,
+                "name": "Пицца пеперони с халапеньо",
+                "sku": "hot_pepperoni_pizza",
+                "price": 30900,
+                "timestamp": "2025-03-03T21:20:00",
+                "residue": 4,
+                "machine_id": 2
+            }
+        ]
+    },
+    {
+        "category": {
+            "id": 4,
+            "name": "Горячие блюда",
+            "sku": "hot_dishes"
+        },
+        "sales": [
+            {
+                "id": 91,
+                "name": "Котлеты с картофельным пюре",
+                "sku": "cutlet_with_mashed_potatoes",
+                "price": 21900,
+                "timestamp": "2025-03-03T15:30:00",
+                "residue": 4,
+                "machine_id": 7
+            },
+            {
+                "id": 92,
+                "name": "mac&cheese",
+                "sku": "mac_and_cheese",
+                "price": 20900,
+                "timestamp": "2025-03-03T15:40:00",
+                "residue": 3,
+                "machine_id": 8
+            },
+            {
+                "id": 93,
+                "name": "Плов",
+                "sku": "plov",
+                "price": 20900,
+                "timestamp": "2025-03-03T15:50:00",
+                "residue": 5,
+                "machine_id": 9
+            },
+            {
+                "id": 94,
+                "name": "mac&cheese",
+                "sku": "mac_and_cheese",
+                "price": 20900,
+                "timestamp": "2025-03-03T16:00:00",
+                "residue": 3,
+                "machine_id": 8
+            },
+            {
+                "id": 95,
+                "name": "Плов",
+                "sku": "plov",
+                "price": 20900,
+                "timestamp": "2025-03-03T16:10:00",
+                "residue": 5,
+                "machine_id": 9
+            },
+            {
+                "id": 96,
+                "name": "Котлеты с картофельным пюре",
+                "sku": "cutlet_with_mashed_potatoes",
+                "price": 21900,
+                "timestamp": "2025-03-03T16:20:00",
+                "residue": 4,
+                "machine_id": 7
+            },
+            {
+                "id": 97,
+                "name": "mac&cheese",
+                "sku": "mac_and_cheese",
+                "price": 20900,
+                "timestamp": "2025-03-03T16:30:00",
+                "residue": 3,
+                "machine_id": 8
+            },
+            {
+                "id": 98,
+                "name": "Плов",
+                "sku": "plov",
+                "price": 20900,
+                "timestamp": "2025-03-03T16:40:00",
+                "residue": 5,
+                "machine_id": 9
+            },
+            {
+                "id": 99,
+                "price": 20900,
+                "timestamp": "2025-03-03T16:50:00",
+                "machine_id": 8
+            },
+            {
+                "id": 100,
+                "price": 20900,
+                "timestamp": "2025-03-03T17:00:00",
+                "machine_id": 9
+            },
+            {
+                "id": 101,
+                "name": "Котлеты с картофельным пюре",
+                "sku": "cutlet_with_mashed_potatoes",
+                "price": 21900,
+                "timestamp": "2025-03-03T17:10:00",
+                "residue": 3,
+                "machine_id": 3
+            },
+            {
+                "id": 102,
+                "name": "mac&cheese",
+                "sku": "mac_and_cheese",
+                "price": 20900,
+                "timestamp": "2025-03-03T17:20:00",
+                "residue": 2,
+                "machine_id": 4
+            },
+            {
+                "id": 103,
+                "name": "Плов",
+                "sku": "plov",
+                "price": 20900,
+                "timestamp": "2025-03-03T17:30:00",
+                "residue": 4,
+                "machine_id": 5
+            },
+            {
+                "id": 104,
+                "name": "mac&cheese",
+                "sku": "mac_and_cheese",
+                "price": 20900,
+                "timestamp": "2025-03-03T17:40:00",
+                "residue": 3,
+                "machine_id": 6
+            },
+            {
+                "id": 105,
+                "name": "Плов",
+                "sku": "plov",
+                "price": 20900,
+                "timestamp": "2025-03-03T17:50:00",
+                "residue": 2,
+                "machine_id": 7
+            },
+            {
+                "id": 106,
+                "name": "Котлеты с картофельным пюре",
+                "sku": "cutlet_with_mashed_potatoes",
+                "price": 21900,
+                "timestamp": "2025-03-03T18:00:00",
+                "residue": 4,
+                "machine_id": 8
+            },
+            {
+                "id": 107,
+                "name": "mac&cheese",
+                "sku": "mac_and_cheese",
+                "price": 20900,
+                "timestamp": "2025-03-03T18:10:00",
+                "residue": 3,
+                "machine_id": 9
+            },
+            {
+                "id": 108,
+                "name": "mac&cheese",
+                "sku": "mac_and_cheese",
+                "price": 20900,
+                "timestamp": "2025-03-03T18:20:00",
+                "residue": 2,
+                "machine_id": 1
+            },
+            {
+                "id": 109,
+                "name": "Котлеты с картофельным пюре",
+                "sku": "cutlet_with_mashed_potatoes",
+                "price": 21900,
+                "timestamp": "2025-03-03T18:30:00",
+                "residue": 3,
+                "machine_id": 2
+            },
+            {
+                "id": 110,
+                "name": "Плов",
+                "sku": "plov",
+                "price": 20900,
+                "timestamp": "2025-03-03T18:40:00",
+                "residue": 4,
+                "machine_id": 3
+            }
+        ]
+    },
+    {
+        "category": {
+            "id": 5,
+            "name": "Бургеры",
+            "sku": "burger"
+        },
+        "sales": [
+            {
+                "id": 111,
+                "name": "Russian Lumberjack бургер",
+                "sku": "russian_lumberjack_burger",
+                "price": 33900,
+                "timestamp": "2025-03-03T16:30:00",
+                "residue": 3,
+                "machine_id": 3
+            },
+            {
+                "id": 112,
+                "name": "BBQ бургер",
+                "sku": "bbq_burger",
+                "price": 30900,
+                "timestamp": "2025-03-03T16:40:00",
+                "residue": 4,
+                "machine_id": 4
+            },
+            {
+                "id": 113,
+                "name": "Чизбургер",
+                "sku": "cheese_burger",
+                "price": 20900,
+                "timestamp": "2025-03-03T16:50:00",
+                "residue": 5,
+                "machine_id": 5
+            },
+            {
+                "id": 114,
+                "name": "Russian Lumberjack бургер",
+                "sku": "russian_lumberjack_burger",
+                "price": 33900,
+                "timestamp": "2025-03-03T17:00:00",
+                "residue": 2,
+                "machine_id": 6
+            },
+            {
+                "id": 115,
+                "name": "BBQ бургер",
+                "sku": "bbq_burger",
+                "price": 30900,
+                "timestamp": "2025-03-03T17:10:00",
+                "residue": 1,
+                "machine_id": 7
+            },
+            {
+                "id": 116,
+                "name": "Чизбургер",
+                "sku": "cheese_burger",
+                "price": 20900,
+                "timestamp": "2025-03-03T17:20:00",
+                "residue": 3,
+                "machine_id": 8
+            },
+            {
+                "id": 117,
+                "name": "Russian Lumberjack бургер",
+                "sku": "russian_lumberjack_burger",
+                "price": 33900,
+                "timestamp": "2025-03-03T17:30:00",
+                "residue": 5,
+                "machine_id": 9
+            },
+            {
+                "id": 118,
+                "name": "BBQ бургер",
+                "sku": "bbq_burger",
+                "price": 30900,
+                "timestamp": "2025-03-03T17:40:00",
+                "residue": 2,
+                "machine_id": 10
+            },
+            {
+                "id": 119,
+                "name": "Чизбургер",
+                "sku": "cheese_burger",
+                "price": 20900,
+                "timestamp": "2025-03-03T17:50:00",
+                "residue": 1,
+                "machine_id": 1
+            },
+            {
+                "id": 120,
+                "name": "Russian Lumberjack бургер",
+                "sku": "russian_lumberjack_burger",
+                "price": 33900,
+                "timestamp": "2025-03-03T18:00:00",
+                "residue": 3,
+                "machine_id": 2
+            },
+            {
+                "id": 121,
+                "name": "BBQ бургер",
+                "sku": "bbq_burger",
+                "price": 30900,
+                "timestamp": "2025-03-03T18:10:00",
+                "residue": 4,
+                "machine_id": 3
+            },
+            {
+                "id": 122,
+                "name": "Чизбургер",
+                "sku": "cheese_burger",
+                "price": 20900,
+                "timestamp": "2025-03-03T18:20:00",
+                "residue": 2,
+                "machine_id": 4
+            },
+            {
+                "id": 123,
+                "name": "Russian Lumberjack бургер",
+                "sku": "russian_lumberjack_burger",
+                "price": 33900,
+                "timestamp": "2025-03-03T18:30:00",
+                "residue": 1,
+                "machine_id": 5
+            },
+            {
+                "id": 124,
+                "name": "BBQ бургер",
+                "sku": "bbq_burger",
+                "price": 30900,
+                "timestamp": "2025-03-03T18:40:00",
+                "residue": 3,
+                "machine_id": 6
+            },
+            {
+                "id": 125,
+                "name": "Чизбургер",
+                "sku": "cheese_burger",
+                "price": 20900,
+                "timestamp": "2025-03-03T18:50:00",
+                "residue": 4,
+                "machine_id": 7
+            },
+            {
+                "id": 126,
+                "name": "Russian Lumberjack бургер",
+                "sku": "russian_lumberjack_burger",
+                "price": 33900,
+                "timestamp": "2025-03-03T19:00:00",
+                "residue": 2,
+                "machine_id": 8
+            },
+            {
+                "id": 127,
+                "name": "BBQ бургер",
+                "sku": "bbq_burger",
+                "price": 30900,
+                "timestamp": "2025-03-03T19:10:00",
+                "residue": 1,
+                "machine_id": 9
+            },
+            {
+                "id": 128,
+                "name": "Чизбургер",
+                "sku": "cheese_burger",
+                "price": 20900,
+                "timestamp": "2025-03-03T19:20:00",
+                "residue": 3,
+                "machine_id": 10
+            },
+            {
+                "id": 129,
+                "name": "Russian Lumberjack бургер",
+                "sku": "russian_lumberjack_burger",
+                "price": 33900,
+                "timestamp": "2025-03-03T19:30:00",
+                "residue": 4,
+                "machine_id": 1
+            },
+            {
+                "id": 130,
+                "name": "BBQ бургер",
+                "sku": "bbq_burger",
+                "price": 30900,
+                "timestamp": "2025-03-03T19:40:00",
+                "residue": 2,
+                "machine_id": 2
+            }
+        ]
+    },
+    {
+        "category": {
+            "id": 6,
+            "name": "Шаурма",
+            "sku": "shaurma"
+        },
+        "sales": [
+            {
+                "id": 131,
+                "name": "Шаурма сырная",
+                "sku": "cheese_shawarma",
+                "price": 28900,
+                "timestamp": "2025-03-03T19:50:00",
+                "residue": 1,
+                "machine_id": 8
+            },
+            {
+                "id": 132,
+                "name": "Шаурма классическая",
+                "sku": "classical_shawarma",
+                "price": 26900,
+                "timestamp": "2025-03-03T20:00:00",
+                "residue": 2,
+                "machine_id": 9
+            },
+            {
+                "id": 133,
+                "name": "Шаурма острая",
+                "sku": "hot_shawarma",
+                "price": 26900,
+                "timestamp": "2025-03-03T20:10:00",
+                "residue": 3,
+                "machine_id": 10
+            },
+            {
+                "id": 134,
+                "name": "Шаурма фирменная",
+                "sku": "branded_shawarma",
+                "price": 25900,
+                "timestamp": "2025-03-03T20:20:00",
+                "residue": 2,
+                "machine_id": 1
+            },
+            {
+                "id": 135,
+                "name": "Шаурма по-корейски",
+                "sku": "korean_shawarma",
+                "price": 24900,
+                "timestamp": "2025-03-03T20:30:00",
+                "residue": 1,
+                "machine_id": 2
+            },
+            {
+                "id": 136,
+                "name": "Шаурма сырная",
+                "sku": "cheese_shawarma",
+                "price": 28900,
+                "timestamp": "2025-03-03T20:40:00",
+                "residue": 3,
+                "machine_id": 3
+            },
+            {
+                "id": 137,
+                "name": "Шаурма классическая",
+                "sku": "classical_shawarma",
+                "price": 26900,
+                "timestamp": "2025-03-03T20:50:00",
+                "residue": 2,
+                "machine_id": 4
+            },
+            {
+                "id": 138,
+                "name": "Шаурма острая",
+                "sku": "hot_shawarma",
+                "price": 26900,
+                "timestamp": "2025-03-03T21:00:00",
+                "residue": 1,
+                "machine_id": 5
+            },
+            {
+                "id": 139,
+                "name": "Шаурма фирменная",
+                "sku": "branded_shawarma",
+                "price": 25900,
+                "timestamp": "2025-03-03T21:10:00",
+                "residue": 3,
+                "machine_id": 6
+            },
+            {
+                "id": 140,
+                "name": "Шаурма по-корейски",
+                "sku": "korean_shawarma",
+                "price": 24900,
+                "timestamp": "2025-03-03T21:20:00",
+                "residue": 2,
+                "machine_id": 7
+            },
+            {
+                "id": 141,
+                "name": "Шаурма сырная",
+                "sku": "cheese_shawarma",
+                "price": 28900,
+                "timestamp": "2025-03-03T21:30:00",
+                "residue": 1,
+                "machine_id": 8
+            },
+            {
+                "id": 142,
+                "name": "Шаурма классическая",
+                "sku": "classical_shawarma",
+                "price": 26900,
+                "timestamp": "2025-03-03T21:40:00",
+                "residue": 3,
+                "machine_id": 9
+            },
+            {
+                "id": 143,
+                "name": "Шаурма острая",
+                "sku": "hot_shawarma",
+                "price": 26900,
+                "timestamp": "2025-03-03T21:50:00",
+                "residue": 2,
+                "machine_id": 10
+            },
+            {
+                "id": 144,
+                "name": "Шаурма фирменная",
+                "sku": "branded_shawarma",
+                "price": 25900,
+                "timestamp": "2025-03-03T22:00:00",
+                "residue": 1,
+                "machine_id": 1
+            },
+            {
+                "id": 145,
+                "name": "Шаурма по-корейски",
+                "sku": "korean_shawarma",
+                "price": 24900,
+                "timestamp": "2025-03-03T22:10:00",
+                "residue": 2,
+                "machine_id": 2
+            },
+            {
+                "id": 146,
+                "name": "Шаурма сырная",
+                "sku": "cheese_shawarma",
+                "price": 28900,
+                "timestamp": "2025-03-03T22:20:00",
+                "residue": 3,
+                "machine_id": 3
+            },
+            {
+                "id": 147,
+                "name": "Шаурма классическая",
+                "sku": "classical_shawarma",
+                "price": 26900,
+                "timestamp": "2025-03-03T22:30:00",
+                "residue": 1,
+                "machine_id": 4
+            },
+            {
+                "id": 148,
+                "name": "Шаурма острая",
+                "sku": "hot_shawarma",
+                "price": 26900,
+                "timestamp": "2025-03-03T22:40:00",
+                "residue": 2,
+                "machine_id": 5
+            },
+            {
+                "id": 149,
+                "name": "Шаурма фирменная",
+                "sku": "branded_shawarma",
+                "price": 25900,
+                "timestamp": "2025-03-03T22:50:00",
+                "residue": 3,
+                "machine_id": 6
+            },
+            {
+                "id": 150,
+                "name": "Шаурма по-корейски",
+                "sku": "korean_shawarma",
+                "price": 24900,
+                "timestamp": "2025-03-03T23:00:00",
+                "residue": 1,
+                "machine_id": 7
+            },
+            {
+                "id": 151,
+                "name": "Шаурма сырная",
+                "sku": "cheese_shawarma",
+                "price": 28900,
+                "timestamp": "2025-03-03T23:10:00",
+                "residue": 2,
+                "machine_id": 8
+            },
+            {
+                "id": 152,
+                "name": "Шаурма классическая",
+                "sku": "classical_shawarma",
+                "price": 26900,
+                "timestamp": "2025-03-03T23:20:00",
+                "residue": 1,
+                "machine_id": 9
+            },
+            {
+                "id": 153,
+                "name": "Шаурма острая",
+                "sku": "hot_shawarma",
+                "price": 26900,
+                "timestamp": "2025-03-03T23:30:00",
+                "residue": 3,
+                "machine_id": 10
+            },
+            {
+                "id": 154,
+                "name": "Шаурма фирменная",
+                "sku": "branded_shawarma",
+                "price": 25900,
+                "timestamp": "2025-03-03T23:40:00",
+                "residue": 2,
+                "machine_id": 1
+            },
+            {
+                "id": 155,
+                "name": "Шаурма по-корейски",
+                "sku": "korean_shawarma",
+                "price": 24900,
+                "timestamp": "2025-03-03T23:50:00",
+                "residue": 1,
+                "machine_id": 2
+            },
+            {
+                "id": 156,
+                "name": "Шаурма сырная",
+                "sku": "cheese_shawarma",
+                "price": 28900,
+                "timestamp": "2025-03-04T00:00:00",
+                "residue": 3,
+                "machine_id": 3
+            },
+            {
+                "id": 157,
+                "name": "Шаурма классическая",
+                "sku": "classical_shawarma",
+                "price": 26900,
+                "timestamp": "2025-03-04T01:00:00",
+                "residue": 2,
+                "machine_id": 6
+            },
+            {
+                "id": 158,
+                "name": "Шаурма по-корейски",
+                "sku": "korean_shawarma",
+                "price": 24900,
+                "timestamp": "2025-03-04T02:00:00",
+                "residue": 1,
+                "machine_id": 8
+            },
+            {
+                "id": 159,
+                "name": "Шаурма острая",
+                "sku": "hot_shawarma",
+                "price": 26900,
+                "timestamp": "2025-03-04T03:00:00",
+                "residue": 3,
+                "machine_id": 9
+            },
+            {
+                "id": 160,
+                "name": "Шаурма фирменная",
+                "sku": "branded_shawarma",
+                "price": 25900,
+                "timestamp": "2025-03-04T04:00:00",
+                "residue": 2,
+                "machine_id": 10
+            },
+            {
+                "id": 161,
+                "name": "Шаурма сырная",
+                "sku": "cheese_shawarma",
+                "price": 28900,
+                "timestamp": "2025-03-04T05:00:00",
+                "residue": 1,
+                "machine_id": 1
+            },
+            {
+                "id": 162,
+                "name": "Шаурма классическая",
+                "sku": "classical_shawarma",
+                "price": 26900,
+                "timestamp": "2025-03-04T06:00:00",
+                "residue": 2,
+                "machine_id": 2
+            },
+            {
+                "id": 163,
+                "name": "Шаурма по-корейски",
+                "sku": "korean_shawarma",
+                "price": 24900,
+                "timestamp": "2025-03-04T07:00:00",
+                "residue": 1,
+                "machine_id": 3
+            },
+            {
+                "id": 164,
+                "name": "Шаурма острая",
+                "sku": "hot_shawarma",
+                "price": 26900,
+                "timestamp": "2025-03-04T08:00:00",
+                "residue": 3,
+                "machine_id": 4
+            },
+            {
+                "id": 165,
+                "name": "Шаурма фирменная",
+                "sku": "branded_shawarma",
+                "price": 25900,
+                "timestamp": "2025-03-04T09:00:00",
+                "residue": 2,
+                "machine_id": 5
+            },
+            {
+                "id": 166,
+                "name": "Шаурма сырная",
+                "sku": "cheese_shawarma",
+                "price": 28900,
+                "timestamp": "2025-03-04T10:00:00",
+                "residue": 1,
+                "machine_id": 6
+            }
+        ]
+    }
+]
