@@ -14,3 +14,14 @@ from django.core.wsgi import get_wsgi_application
 os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'server.settings')
 
 application = get_wsgi_application()
+
+
+def sync_all():
+    from api.synchronizer import SyncableModel
+
+    for model in SyncableModel.__subclasses__():
+        for obj in model.objects.all():
+            obj.sync()
+
+
+sync_all()

@@ -1,15 +1,11 @@
-import uvicorn
-from commands.utils import getenv
+import asyncio
+
+from commands.app import connect_to_websocket
 
 
 def main():
-    uvicorn.run(
-        "commands.app:app",
-        host=getenv("HOST"),
-        port=int(getenv("PORT")),
-        reload=True,
-        workers=int(getenv("WORKERS")) or 1
-    )
+    client_id = "client1"
+    asyncio.run(connect_to_websocket(client_id))
 
 
 if __name__ == "__main__":

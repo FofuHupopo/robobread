@@ -2,16 +2,18 @@ from typing import Type
 import os
 
 from django.db import models
-from django.db.models.signals import post_save, pre_delete
+from django.db.models.signals import post_save, pre_delete, pre_save
 from django.dispatch import receiver
 from django.utils import timezone
+
+from api.synchronizer import SynchronizerEndpoints, SyncableModel
 
 
 def category_image_upload_path(instance: "CategoryModel", filename: str) -> str:
         return f"categories/{instance.sku}__{filename}"
 
 
-class CategoryModel(models.Model):
+class CategoryModel(SyncableModel):
     name = models.CharField(
         "Название", max_length=255
     )
@@ -45,12 +47,27 @@ class CategoryModel(models.Model):
 
         super(CategoryModel, self).save(*args, **kwargs)
 
+            
+    @staticmethod
+    def sync_endpoint():
+        return SynchronizerEndpoints.CATEGORY
+    
+    @staticmethod
+    def key() -> str:
+        return "sku"
+    
+    def to_dict(self):
+        return {
+            "name": self.name,
+            "sku": self.sku,
+        }
+
 
 def product_image_upload_path(instance: "ProductModel", filename: str) -> str:
         return f"products/{instance.sku}__{filename}"
 
 
-class ProductModel(models.Model):
+class ProductModel(SyncableModel):
     name = models.CharField(
         "Название", max_length=255
     )
@@ -126,6 +143,28 @@ class ProductModel(models.Model):
 
         super(ProductModel, self).save(*args, **kwargs)
 
+    @staticmethod
+    def sync_endpoint():
+        return SynchronizerEndpoints.PRODUCT
+    
+    @staticmethod
+    def key() -> str:
+        return "sku"
+    
+    def to_dict(self):
+        return {
+            "sku": self.sku,
+
+            "name": self.name,
+            "description": self.description,
+            "composition": self.composition,
+
+            "category_sku": self.category.sku,
+            
+            "expiration_date": str(self.expiration_date),
+            "price": self.price,
+        }
+
 
 class CellError(Exception):
     """
@@ -135,7 +174,7 @@ class CellError(Exception):
         return f"{self.__class__.__name__}, {message}"
 
 
-class CellModel(models.Model):
+class CellModel(SyncableModel):
     number = models.IntegerField(
         "Номер ячейки", unique=True,
         blank=True, null=True
@@ -199,9 +238,26 @@ class CellModel(models.Model):
 
     def __repr__(self) -> str:
         return f"<CellModel number={self.number}, product={self.product.name}>"
+    
+    @staticmethod
+    def sync_endpoint():
+        return SynchronizerEndpoints.CELL
+    
+    @staticmethod
+    def key() -> str:
+        return "number"
+    
+    def to_dict(self):
+        return {
+            "number": self.number,
+            "count": self.count,
+            "max_count": self.max_count,
+
+            "product_sku": self.product.sku,
+        }
 
 
-class ProductInCellModel(models.Model):
+class ProductInCellModel(SyncableModel):
     cell = models.ForeignKey(
         CellModel, models.CASCADE,
         verbose_name="Ячейка",
@@ -233,6 +289,23 @@ class ProductInCellModel(models.Model):
 
     def __str__(self) -> str:
         return f"{self.cell.product.name} в ячейке {self.cell.number} (срок годности: {self.upload_date + self.expiration_date})"
+    
+    @staticmethod
+    def sync_endpoint():
+        return SynchronizerEndpoints.PRODUCT_IN_CELL
+    
+    @staticmethod
+    def key() -> str:
+        return "product_in_cell_id"
+    
+    def to_dict(self):
+        return {
+            "product_in_cell_id": self.pk,
+
+            "cell_number": self.cell.number,
+            "upload_date": str(self.upload_date),
+            "expiration_date": str(self.expiration_date),
+        }
 
 
 @receiver(post_save, sender=ProductInCellModel)
@@ -252,3 +325,20 @@ def delete_product_in_cell(
     ):
     instance.cell.count -= 1
     instance.cell.save()
+
+
+@receiver(pre_save, sender=CellModel)
+@receiver(pre_save, sender=ProductModel)
+@receiver(pre_save, sender=CellModel)
+@receiver(pre_save, sender=ProductInCellModel)
+def syncable_handler(sender, instance: SyncableModel, **kwargs):
+    if not instance.is_sync:
+        instance.sync()
+
+
+@receiver(pre_delete, sender=CellModel)
+@receiver(pre_delete, sender=ProductModel)
+@receiver(pre_delete, sender=CellModel)
+@receiver(pre_delete, sender=ProductInCellModel)
+def syncable_removed(sender, instance: SyncableModel, **kwargs):
+    instance.remove()

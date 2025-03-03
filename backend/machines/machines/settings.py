@@ -1,6 +1,10 @@
 from pathlib import Path
+from dotenv import load_dotenv
 
 from .utils import getenv
+
+
+load_dotenv()
 
 
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -25,6 +29,9 @@ INSTALLED_APPS = [
     'rest_framework',
     'corsheaders',
     'drf_spectacular',
+
+    # API
+    'api.synchronizer',
 ]
 
 MIDDLEWARE = [
@@ -36,6 +43,8 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+
+    'api.middlewares.MachineTokenMiddleware',
 ]
 
 ROOT_URLCONF = 'machines.urls'
@@ -117,6 +126,7 @@ CORS_ALLOW_HEADERS = [
     'name',
     "boundary",
     "Set-Cookie",
+    "Machine-Token",
 ]
 
 DATA_UPLOAD_MAX_MEMORY_SIZE = 1024 * 1024 * 20  # 20 MB

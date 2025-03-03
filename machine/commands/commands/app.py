@@ -1,21 +1,22 @@
-from fastapi import FastAPI, APIRouter
-from .controllers import router
+import asyncio
+import websockets
 
 
-app = FastAPI(
-    title="Commands API",
-    description="API для команд для торгового автомата",
-    version="1.0.0",
-)
+async def connect_to_websocket(client_id):
+    uri = f"ws://localhost:8006/ws/{client_id}"
+    
+    async with websockets.connect(uri) as websocket:
+        print("Connected to the WebSocket server.")
 
-api_router = APIRouter(
-    prefix="/api"
-)
-api_router.include_router(router)
+        async def receive_messages():
+            print("hi")
+            while True:
+                message = await websocket.recv()
+                print(f"Message from server: {message}")
 
-app.include_router(api_router)
+        asyncio.create_task(receive_messages())
 
-
-@app.get("/")
-async def index():
-    return "Commands Microservice"
+        while True:
+            data = input("Enter data to send to server: ")
+            await websocket.send(data)
+            print(f"Sent: {data}")
